@@ -2,6 +2,7 @@
 #include <atltime.h>
 #include <windows.h>
 #include <processthreadsapi.h>
+#include <share.h>
 
 const CString strDecorator = _T("********************************************************************************\n");
 
@@ -223,15 +224,21 @@ BOOL CLogger::LogMessage(LogLevel logLevelArg, LPCTSTR pszFormat, ...)
   fileError = _tfopen_s(&pLogFile, strLogFilePath, _T("r"));
   if (ERROR_SUCCESS != fileError)
   {
-    fileError = _tfopen_s(&pLogFile, strLogFilePath, _T("w"));
+    pLogFile = _tfsopen(strLogFilePath, _T("w"), _SH_DENYNO);
+    if (nullptr == pLogFile)
+    {
+      bRet = FALSE;
+      return bRet;
+    }
+
     CStringA pszApplicationInfo(GetApplicationInfo());
     _fprintf_p(pLogFile, pszApplicationInfo);
   }
   else
   {
     fclose(pLogFile);
-    fileError = _tfopen_s(&pLogFile, strLogFilePath, _T("a"));
-    if (ERROR_SUCCESS != fileError)
+    pLogFile = _tfsopen(strLogFilePath, _T("a"), _SH_DENYNO);
+    if (nullptr == pLogFile)
     {
       bRet = FALSE;
       return bRet;

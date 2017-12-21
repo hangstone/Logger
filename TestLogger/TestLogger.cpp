@@ -28,7 +28,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
   CLogger* pLogger = CLogger::GetInstance(_T("testLog"));
 
-  pLogger->SetLogDir(_T("E:\\99_test\\Logger\\Debug"));
+  pLogger->SetLogDir(_T("D:\\Project_Etc\\Logger\\Debug"));
   pLogger->SetLogFilePrefix(_T("testLog"));
   pLogger->SetLogLevel(LogLevel::Developer);
   pLogger->SetLogPeriod(LogPeriod::OneFilePerOneDay);
