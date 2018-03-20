@@ -168,9 +168,44 @@ BOOL CLogger::LogMessage(LogLevel logLevelArg, LPCTSTR pszFormat, ...)
 {
   bool      bRet = FALSE;
 
-  //  로그의 내용이 설정된 log 레벨보다 낮은 경우에는 아무것도 하지 않음
+  //  로그의 내용이 설정된 log 레벨보다 낮은 경우에는 Trace만 보여주고 
+  //  아무런 작업도 하지 않음
   if (m_nCurLogLevel < logLevelArg)
   {
+#ifdef _DEBUG
+    va_list   ap;
+    va_start(ap, pszFormat);
+
+    //  set log level
+    CString strLogLevelName;
+    strLogLevelName = GetLogLevelToString(logLevelArg);
+
+    //  get current time
+    CString strTime;
+    if (LogPeriod::OneFilePerOneDay == GetLogPeriod())
+      strTime = CTime::GetCurrentTime().Format("%Y%m%d");
+    else
+      strTime = CTime::GetCurrentTime().Format("%Y%m%d%H");
+
+    //  set log message
+    CString strLogMsg;
+    strLogMsg.Format(_T("%s [%s] [P=%d,T=%d] %s\n"),
+                     CTime::GetCurrentTime().Format(_T("%Y/%m/%d %H:%M:%S")),
+                     strLogLevelName,
+                     GetCurrentProcessId(),
+                     GetCurrentThreadId(),
+                     pszFormat);
+
+    CStringA pszLogMsg(strLogMsg);
+    pszLogMsg.FormatV((CStringA)strLogMsg, ap);
+
+    bRet = true;
+
+    va_end(ap);
+
+    OutputDebugString((CString)pszLogMsg);
+#endif // _DEBUG
+
     return bRet;
   }
 
