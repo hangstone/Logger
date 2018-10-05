@@ -297,17 +297,18 @@ BOOL CLogger::LogMessage(LogLevel logLevelArg, LPCTSTR pszFormat, ...)
   _vftprintf_p(pLogFile, strLogMsg, ap);
   _tsetlocale(LC_ALL, pPreLocale);
   free(pPreLocale);
+
+  //  debug용 출력
+  CString strFullLog;
+  strFullLog.FormatV(strLogMsg, ap);
+  OutputDebugString(strFullLog);
+
   va_end(ap);
   fclose(pLogFile);
 
   bRet = true;
 
   //SingleLock.Unlock();
-
-  //  debug용 출력
-  CString strFullLog;
-  strFullLog.FormatV(strLogMsg, ap);
-  OutputDebugString(strFullLog);
 
   return bRet;
 }
