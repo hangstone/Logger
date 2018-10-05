@@ -3,6 +3,7 @@
 #include <windows.h>
 #include <processthreadsapi.h>
 #include <share.h>
+#include <locale.h>
 
 const CString strDecorator = _T("********************************************************************************\n");
 
@@ -289,19 +290,24 @@ BOOL CLogger::LogMessage(LogLevel logLevelArg, LPCTSTR pszFormat, ...)
     GetCurrentThreadId(),
     pszFormat);
 
-  CStringA pszLogMsg(strLogMsg);
-  _vfprintf_p(pLogFile, pszLogMsg, ap);
-  pszLogMsg.FormatV((CStringA)strLogMsg, ap);
-
+  //  file에 기록
+  //  locale 설정을 default로 바꾸고, 파일 기록 후 원래대로 복원
+  TCHAR* pPreLocale = _tcsdup(_tsetlocale(LC_ALL, nullptr));
+  _tsetlocale(LC_ALL, _T(""));
+  _vftprintf_p(pLogFile, strLogMsg, ap);
+  _tsetlocale(LC_ALL, pPreLocale);
+  free(pPreLocale);
+  va_end(ap);
   fclose(pLogFile);
 
   bRet = true;
 
   //SingleLock.Unlock();
 
-  va_end(ap);
-
-  OutputDebugString((CString)pszLogMsg);
+  //  debug용 출력
+  CString strFullLog;
+  strFullLog.FormatV(strLogMsg, ap);
+  OutputDebugString(strFullLog);
 
   return bRet;
 }

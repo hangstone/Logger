@@ -28,15 +28,19 @@ int _tmain(int argc, _TCHAR* argv[])
 
   CLogger* pLogger = CLogger::GetInstance(_T("testLog"));
 
-  pLogger->SetLogDir(_T("D:\\Project_Etc\\Logger\\Debug"));
+  pLogger->SetLogDir(_T("C:\\TYsoft\\test"));
   pLogger->SetLogFilePrefix(_T("testLog"));
   pLogger->SetLogLevel(LogLevel::Developer);
   pLogger->SetLogPeriod(LogPeriod::OneFilePerOneDay);
   CLogger::GetInstance(_T("testLog"))->LogMessage(LogLevel::ErrorOnly, _T("asd"));
 
-  for (int i=0; i<10000000 ; i++)
+  for (int i=0; i<10 ; i++)
   {
-    pLogger->LogMessage(LogLevel::ErrorOnly, _T("%d %s %s"), 10, (CStringA)_T("asd"),"zxc");
+    pLogger->LogMessage(LogLevel::ErrorOnly, 
+        _T("%d %s %s"), 
+        10, 
+        _T("Å×½ºÆ®"), 
+        _T("zxc"));
   }
 
 #ifdef _DEBUG
