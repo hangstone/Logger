@@ -28,7 +28,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
   CLogger* pLogger = CLogger::GetInstance(_T("testLog"));
 
-  pLogger->SetLogDir(_T("C:\\TYsoft\\test"));
+  pLogger->SetLogDir(_T("C:\\TYsoft\\log"));
   pLogger->SetLogFilePrefix(_T("testLog"));
   pLogger->SetLogLevel(LogLevel::Developer);
   pLogger->SetLogPeriod(LogPeriod::OneFilePerOneDay);
@@ -36,11 +36,18 @@ int _tmain(int argc, _TCHAR* argv[])
 
   for (int i=0; i<10 ; i++)
   {
+    INT nDec = 10;
+    CString strTest = _T("제타");
+    CString strEng = _T("zxc");
+
     pLogger->LogMessage(LogLevel::ErrorOnly, 
         _T("%d %s %s"), 
-        10, 
-        _T("테스트"), 
-        _T("zxc"));
+        nDec, 
+        strTest, 
+        strEng);
+
+    pLogger->LogMessage(LogLevel::ErrorOnly,
+        _T("%s"), static_cast<CString>("한글"));
   }
 
 #ifdef _DEBUG

@@ -260,20 +260,19 @@ BOOL CLogger::LogMessage(LogLevel logLevelArg, LPCTSTR pszFormat, ...)
   fileError = _tfopen_s(&pLogFile, strLogFilePath, _T("r"));
   if (ERROR_SUCCESS != fileError)
   {
-    pLogFile = _tfsopen(strLogFilePath, _T("w"), _SH_DENYNO);
-    if (nullptr == pLogFile)
+    fileError = _tfopen_s(&pLogFile, strLogFilePath, _T("wt+, ccs=UTF-8"));
+    if (ERROR_SUCCESS != fileError)
     {
       bRet = FALSE;
       return bRet;
     }
 
-    CStringA pszApplicationInfo(GetApplicationInfo());
-    _fprintf_p(pLogFile, pszApplicationInfo);
+    _ftprintf_p(pLogFile, GetApplicationInfo());
   }
   else
   {
     fclose(pLogFile);
-    pLogFile = _tfsopen(strLogFilePath, _T("a"), _SH_DENYNO);
+    pLogFile = _tfsopen(strLogFilePath, _T("at+, ccs=UTF-8"), _SH_DENYNO);
     if (nullptr == pLogFile)
     {
       bRet = FALSE;
@@ -292,7 +291,8 @@ BOOL CLogger::LogMessage(LogLevel logLevelArg, LPCTSTR pszFormat, ...)
 
   //  file에 기록
   //  locale 설정을 default로 바꾸고, 파일 기록 후 원래대로 복원
-  TCHAR* pPreLocale = _tcsdup(_tsetlocale(LC_ALL, nullptr));
+  TCHAR* pszOldLocaleTmp = _tsetlocale(LC_ALL, _T(""));
+  TCHAR* pPreLocale = _tcsdup(pszOldLocaleTmp);
   _tsetlocale(LC_ALL, _T(""));
   _vftprintf_p(pLogFile, strLogMsg, ap);
   _tsetlocale(LC_ALL, pPreLocale);
