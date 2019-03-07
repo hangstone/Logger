@@ -36,6 +36,12 @@ typedef enum _LogPeriod
   OneFilePerOneHour
 } LogPeriod;
 
+#define LOG_NOLOG(logger, ...)    (logger->LogMessage(LogLevel::NoLogging, __VA_ARGS__))
+#define LOG_ERRONLY(logger, ...)  (logger->LogMessage(LogLevel::ErrorOnly, __VA_ARGS__))
+#define LOG_SIMPLE(logger, ...)   (logger->LogMessage(LogLevel::Simple, __VA_ARGS__))
+#define LOG_DETAIL(logger, ...)   (logger->LogMessage(LogLevel::Detail, __VA_ARGS__))
+#define LOG_DEV(logger, ...)      (logger->LogMessage(LogLevel::Developer, __VA_ARGS__))
+
 /**
 @brief  logger class
 */

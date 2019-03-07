@@ -40,14 +40,8 @@ int _tmain(int argc, _TCHAR* argv[])
     CString strTest = _T("제타");
     CString strEng = _T("zxc");
 
-    pLogger->LogMessage(LogLevel::ErrorOnly, 
-        _T("%d %s %s"), 
-        nDec, 
-        strTest, 
-        strEng);
-
-    pLogger->LogMessage(LogLevel::ErrorOnly,
-        _T("%s"), static_cast<CString>("한글"));
+    LOG_ERRONLY(pLogger, _T("%d %s %s"), nDec, strTest, strEng);
+    LOG_ERRONLY(pLogger, _T("%s"), static_cast<CString>("한글"));
   }
 
 #ifdef _DEBUG
