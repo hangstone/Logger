@@ -1,6 +1,6 @@
 #include "Logger.h"
 #include <atltime.h>
-#include <windows.h>
+//#include <windows.h>
 #include <processthreadsapi.h>
 #include <share.h>
 #include <locale.h>
@@ -10,11 +10,11 @@ const CString strDecorator = _T("***********************************************
 BOOL      CLogger::m_bDestroyed = FALSE;  
 CLogger*  CLogger::m_pInstance = NULL;
 
-CLogger::CLogger(CString pszLogPrefixArg)
+CLogger::CLogger(void)
   : m_nCurLogLevel(LogLevel::Developer)
   , m_nCurLogPeriod(LogPeriod::OneFilePerOneHour)
   , m_strLogDir(_T(""))
-  , m_strLogPrefix(pszLogPrefixArg)
+  , m_strLogPrefix(_T(""))
   , m_strLogSuffix(_T(""))
   , m_strApplicationName(_T(""))
   , m_strApplicationVersion(_T(""))
@@ -28,18 +28,18 @@ CLogger::~CLogger(void)
   m_bDestroyed = TRUE;
 }
 
-CLogger* CLogger::GetInstance(CString pszLogPrefixArg)
+CLogger* CLogger::GetInstance(void)
 {
   if (m_bDestroyed)
   {
-    m_pInstance = new CLogger(pszLogPrefixArg);
+    m_pInstance = new CLogger();
     //new(m_pInstance) CLogger(pszLogPrefixArg);
     atexit(KillLogger);
     m_bDestroyed = FALSE;
   }
   else if (NULL == m_pInstance)
   {
-    Create(pszLogPrefixArg);
+    Create();
   }
 
   return m_pInstance;

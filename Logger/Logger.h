@@ -36,11 +36,21 @@ typedef enum _LogPeriod
   OneFilePerOneHour
 } LogPeriod;
 
-#define LOG_NOLOG(logger, ...)    (logger->LogMessage(LogLevel::NoLogging, __VA_ARGS__))
-#define LOG_ERRONLY(logger, ...)  (logger->LogMessage(LogLevel::ErrorOnly, __VA_ARGS__))
-#define LOG_SIMPLE(logger, ...)   (logger->LogMessage(LogLevel::Simple, __VA_ARGS__))
-#define LOG_DETAIL(logger, ...)   (logger->LogMessage(LogLevel::Detail, __VA_ARGS__))
-#define LOG_DEV(logger, ...)      (logger->LogMessage(LogLevel::Developer, __VA_ARGS__))
+#define LOG_NOLOG(...) \
+  CLogger::GetInstance()->LogMessage(LogLevel::NoLogging, __VA_ARGS__);
+
+#define LOG_ERRONLY(...) \
+  CLogger::GetInstance()->LogMessage(LogLevel::ErrorOnly, __VA_ARGS__);
+
+#define LOG_SIMPLE(...) \
+  CLogger::GetInstance()->LogMessage(LogLevel::Simple, __VA_ARGS__);
+
+#define LOG_DETAIL(...) \
+  CLogger::GetInstance()->LogMessage(LogLevel::Detail, __VA_ARGS__);
+
+#define LOG_DEV(...) \
+  CLogger::GetInstance()->LogMessage(LogLevel::Developer, __VA_ARGS__);
+
 
 /**
 @brief  logger class
@@ -48,13 +58,12 @@ typedef enum _LogPeriod
 class LOGGER_CLASS CLogger
 {
 public:
-
   /**
   @brief  singleton pattern으로 구현되어 있는 본 클래스의 instance를 얻어 옴
-  @param  pszLogPrefixArg   추후 mutex 구현을 위한 인자
+  @param  void
   @return CLogger*
   */
-  static  CLogger* GetInstance(CString pszLogPrefixArg);
+  static  CLogger* GetInstance(void);
 
   void        SetLogLevel(LogLevel logLevelArg);
   LogLevel    GetLogLevel();
@@ -116,12 +125,12 @@ protected:
   CString     GetLogLevelToString(LogLevel logLevel);
 
 private:
-  CLogger(CString pszLogPrefixArg);
+  CLogger(void);
   virtual ~CLogger(void);
 
-  static  VOID  Create(CString pszLogPrefixArg)
+  static  VOID  Create()
   {
-    static CLogger m_Instance(pszLogPrefixArg);
+    static CLogger m_Instance;
     m_pInstance = &m_Instance;
   }
   static  VOID  KillLogger()
