@@ -20,11 +20,13 @@ SET COPYOPT=/K /R /Y
 XCOPY %SRC_LOG_DIR%\Logger.h					%SRC_DBG_x86_DIR%\*.* %COPYOPT%
 XCOPY %SRC_LOG_DIR%\PipeMessage.h				%SRC_DBG_x86_DIR%\*.* %COPYOPT%
 XCOPY %SRC_LOG_DIR%\PipeServer.h				%SRC_DBG_x86_DIR%\*.* %COPYOPT%
+XCOPY %SRC_LOG_DIR%\PipeStatusServer.h			%SRC_DBG_x86_DIR%\*.* %COPYOPT%
 
 REM -- COPY TY_Lib (header)
 XCOPY %SRC_DBG_x86_DIR%\Logger.h				%LIB_DIR%%INCLUDEDIR%\*.* %COPYOPT%
 XCOPY %SRC_DBG_x86_DIR%\PipeMessage.h			%LIB_DIR%%INCLUDEDIR%\*.* %COPYOPT%
 XCOPY %SRC_DBG_x86_DIR%\PipeServer.h			%LIB_DIR%%INCLUDEDIR%\*.* %COPYOPT%
+XCOPY %SRC_DBG_x86_DIR%\PipeStatusServer.h		%LIB_DIR%%INCLUDEDIR%\*.* %COPYOPT%
 
 REM -- COPY TY_Lib (library)
 XCOPY %SRC_DBG_x86_DIR%\LoggerD.lib				%LIB_DIR%%LIB_DBG_DIR%\*.* %COPYOPT%

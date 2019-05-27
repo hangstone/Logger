@@ -155,11 +155,13 @@
     <ClInclude Include="Logger.h" />
     <ClInclude Include="PipeMessage.h" />
     <ClInclude Include="PipeServer.h" />
+    <ClInclude Include="PipeStatusServer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="PipeMessage.cpp" />
     <ClCompile Include="PipeServer.cpp" />
+    <ClCompile Include="PipeStatusServer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

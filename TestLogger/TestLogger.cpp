@@ -5,6 +5,7 @@
 
 #include "Logger.h"
 #include "PipeServer.h"
+#include "PipeStatusServer.h"
 
 #ifdef _DEBUG
   #ifndef _X64
@@ -56,21 +57,37 @@ int _tmain(int argc, _TCHAR* argv[])
   pLogger->SetLogPeriod(LogPeriod::OneFilePerOneDay);
   CLogger::GetInstance()->LogMessage(LogLevel::ErrorOnly, _T("asd"));
 
-  bRet = CPipeLogServer::GetInstance()->Initialize(_T("TY_RCV119_104"));
-  bRet = CPipeLogServer::GetInstance()->IsConnected();
-  CPipeLogServer::GetInstance()->TransmitMessage(_T("test"));
+  CPipeLogServer* pLogServer = CPipeLogServer::GetInstance();
+  bRet = pLogServer->Initialize(_T("TY_RCV119_104"));
+  Sleep(1000);
+  //bRet = CPipeLogServer::GetInstance()->IsConnected();
+  pLogServer->TransmitMessage(_T("test"));
+
+  CPipeStatusServer* pStatServer = CPipeStatusServer::GetInstance();
+  bRet = pStatServer->Initialize(_T("TY_RCV119_1044"));
+  pStatServer->TransmitMessage(_T("123|456|789|234|567"));
+  
 
   for (int i=0; i<10; i++)
   {
     INT nDec = 10;
-    CString strTest = _T("제타");
+    std::wstring strTest = _T("제타");
     CString strEng = _T("zxc");
 
-    LOG_PIPE_NOLOG(_T("%d %s %s"), nDec, strTest, strEng);
+    LOG_PIPE_NOLOG(_T("%d %s %s"), nDec, strTest.c_str(), strEng);
     LOG_PIPE_ERRONLY(_T("%s"), static_cast<CString>("한글"));
-    LOG_PIPE_SIMPLE(_T("%d %s %s"), nDec, strTest, strEng);
+    LOG_PIPE_SIMPLE(_T("%d %s %s"), nDec, strTest.c_str(), strEng);
     LOG_PIPE_DETAIL(_T("%s"), static_cast<CString>("한글"));
-    LOG_PIPE_DEV(_T("%d %s %s"), nDec, strTest, strEng);
+    LOG_PIPE_DEV(_T("%d %s %s"), nDec, strTest.c_str(), strEng);
+
+    CString strMsg00 = _T("항항항|456|789|234|567|");
+    CString strMsg01 = _T("000|999|000|999|000|");
+    PIPE_STATUS(strMsg00 + _T("0"));
+    PIPE_STATUS(strMsg00 + _T("1"));
+    PIPE_STATUS(strMsg01 + _T("0"));
+    PIPE_STATUS(strMsg01 + _T("1"));
+    PIPE_STATUS(strMsg00 + _T("2"));
+    PIPE_STATUS(strMsg01 + _T("2"));
   }
 
 #ifdef _DEBUG
