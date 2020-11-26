@@ -89,6 +89,9 @@ public:
   void        SetApplicationReleaseDate(LPCTSTR pszAppReleaseDateArg);
   LPCTSTR     GetApplicationReleaseDate();
 
+  INT         GetPassedDaysToDelete() const { return m_nPassedDaysToDelete; }
+  void        SetPassedDaysToDelete(INT val) { m_nPassedDaysToDelete = val; }
+
   /**
   @brief		CLogger::LogMessage
   					
@@ -101,6 +104,13 @@ public:
   @auther		hangseok
   */
   virtual BOOL  LogMessage(LogLevel logLevel, LPCTSTR pszFormat, ...);
+
+  /**
+  @brief  오래된 파일을 삭제하는 함수
+  @param  void
+  @return bool
+  */
+  bool  DeleteOldFiles(void);
 
 protected:
   /**
@@ -152,5 +162,8 @@ private:
   CString       m_strApplicationName;
   CString       m_strApplicationVersion;
   CString       m_strApplicationReleaseDate;
-};
 
+  //  삭제를 위한 기간을 설정
+  //  해당 날짜가 넘어간 후에 log 파일을 삭제할 수 있도록 함
+  INT           m_nPassedDaysToDelete;
+};

@@ -5,6 +5,9 @@
 #include <share.h>
 #include <locale.h>
 
+#define DELETE_FILES_RESET_HOUR     (11)
+#define DELETE_FILES_DELETE_HOUR    (12)
+
 const CString strDecorator = _T("********************************************************************************\n");
 
 BOOL      CLogger::m_bDestroyed = FALSE;  
@@ -19,6 +22,7 @@ CLogger::CLogger(void)
   , m_strApplicationName(_T(""))
   , m_strApplicationVersion(_T(""))
   , m_strApplicationReleaseDate(_T(""))
+  , m_nPassedDaysToDelete(0)
 {
 }
 
@@ -311,4 +315,40 @@ BOOL CLogger::LogMessage(LogLevel logLevelArg, LPCTSTR pszFormat, ...)
   //SingleLock.Unlock();
 
   return bRet;
+}
+
+bool CLogger::DeleteOldFiles(void)
+{
+  if (0 == m_nPassedDaysToDelete)
+    return true;
+
+  CTime tCur;         //  현재 DTTM을 기억
+  CTime tTarget;      //  현재 DTTM을 기준으로 특정일 이전의 DTTM을 기억
+  CTime tLastWrite;   //  file의 수정된 DTTM
+  CString strFilePath;
+  CString strFileTitle;
+  CFileFind finder;
+  BOOL bRet = true;
+  BOOL bFound = TRUE;
+
+  tCur = CTime::GetCurrentTime();
+  tTarget = tCur - CTimeSpan(m_nPassedDaysToDelete, 0, 0, 0);
+  bFound = finder.FindFile(m_strLogDir + _T("\\*.log"));
+
+  while (bFound)
+  {
+    bFound = finder.FindNextFile();
+    
+    finder.GetLastWriteTime(tLastWrite);
+    if (tLastWrite >= tTarget)
+      continue;
+
+    strFileTitle = finder.GetFileTitle();
+    if (-1 == strFileTitle.Find(m_strLogPrefix))
+      continue;
+
+    bRet = DeleteFile(finder.GetFilePath());
+  }
+
+  return bRet == FALSE ? false : true;
 }
