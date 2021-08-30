@@ -80,6 +80,7 @@ int _tmain(int argc, _TCHAR* argv[])
     LOG_PIPE_DETAIL(_T("%s"), static_cast<CString>("한글"));
     LOG_PIPE_DEV(_T("%d %s %s"), nDec, strTest.c_str(), strEng);
     
+    LERR(_T("%s"), static_cast<CString>("한글"));
     LERR(_T("%d %s %s"), nDec, strTest.c_str(), strEng);
 
     CString strMsg00 = _T("항항항|456|789|234|567|");

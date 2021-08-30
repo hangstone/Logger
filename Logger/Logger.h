@@ -52,29 +52,38 @@ typedef enum _LogPeriod
   CLogger::GetInstance()->LogMessage(LogLevel::Developer, __VA_ARGS__);
 
 #define LNOLOG(...) \
+  { \
   CString str(__FUNCTION__); \
   str += _T(": "); \
-  CLogger::GetInstance()->LogMessage(LogLevel::NoLogging, str + __VA_ARGS__);
+  CLogger::GetInstance()->LogMessage(LogLevel::NoLogging, str + __VA_ARGS__); \
+  }
 
 #define LERR(...) \
+  { \
   CString str(__FUNCTION__); \
   str += _T(": "); \
-  CLogger::GetInstance()->LogMessage(LogLevel::ErrorOnly, str + __VA_ARGS__);
+  CLogger::GetInstance()->LogMessage(LogLevel::ErrorOnly, str + __VA_ARGS__); \
+  }
 
 #define LSMP(...) \
+  { \
   CString str(__FUNCTION__); \
   str += _T(": "); \
-  CLogger::GetInstance()->LogMessage(LogLevel::Simple, str + __VA_ARGS__);
+  CLogger::GetInstance()->LogMessage(LogLevel::Simple, str + __VA_ARGS__); \
+  }
 
 #define LDTL(...) \
+  { \
   CString str(__FUNCTION__); \
   str += _T(": "); \
-  CLogger::GetInstance()->LogMessage(LogLevel::Detail, str + __VA_ARGS__);
-
+  CLogger::GetInstance()->LogMessage(LogLevel::Detail, str + __VA_ARGS__); \
+  }
 #define LDEV(...) \
+  { \
   CString str(__FUNCTION__); \
   str += _T(": "); \
-  CLogger::GetInstance()->LogMessage(LogLevel::Developer, str + __VA_ARGS__);
+  CLogger::GetInstance()->LogMessage(LogLevel::Developer, str + __VA_ARGS__); \
+  }
 
 
 /**
