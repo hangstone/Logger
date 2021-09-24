@@ -1,0 +1,21 @@
+
+#include "soapH.h"
+SOAP_NMAC struct Namespace namespaces[] =
+{
+	{"SOAP-ENV", "http://schemas.xmlsoap.org/soap/envelope/", "http://www.w3.org/*/soap-envelope", NULL},
+	{"SOAP-ENC", "http://schemas.xmlsoap.org/soap/encoding/", "http://www.w3.org/*/soap-encoding", NULL},
+	{"xsi", "http://www.w3.org/2001/XMLSchema-instance", "http://www.w3.org/*/XMLSchema-instance", NULL},
+	{"xsd", "http://www.w3.org/2001/XMLSchema", "http://www.w3.org/*/XMLSchema", NULL},
+	{"wreq", "http://tempuri.org/wreq.xsd", NULL, NULL},
+	{"wres", "http://tempuri.org/wres.xsd", NULL, NULL},
+	{"rreq", "http://tempuri.org/rreq.xsd", NULL, NULL},
+	{"rres", "http://tempuri.org/rres.xsd", NULL, NULL},
+	{"frreq", "http://tempuri.org/frreq.xsd", NULL, NULL},
+	{"frres", "http://tempuri.org/frres.xsd", NULL, NULL},
+	{"wlreq", "http://tempuri.org/wlreq.xsd", NULL, NULL},
+	{"wlres", "http://tempuri.org/wlres.xsd", NULL, NULL},
+	{"rlreq", "http://tempuri.org/rlreq.xsd", NULL, NULL},
+	{"rlres", "http://tempuri.org/rlres.xsd", NULL, NULL},
+	{"hangpacs", "http://tempuri.org/hangpacs.xsd", NULL, NULL},
+	{NULL, NULL, NULL, NULL}
+};

@@ -93,6 +93,9 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EntryPointSymbol>
+      </EntryPointSymbol>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -107,6 +110,9 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EntryPointSymbol>
+      </EntryPointSymbol>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -125,9 +131,12 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <EntryPointSymbol>
+      </EntryPointSymbol>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <PostBuildEvent>
-      <Command>signtool.exe sign /f "D:\common\TY_Lib\DigitalSign\20190121-654824_CHAIN_tysoft_co_kr.pfx" /p NDPTUQ /tr http://sha256timestamp.ws.symantec.com/sha256/timestamp /td sha256 /fd sha256 $(TargetPath)</Command>
+      <Command>signtool.exe sign /v /a /f "D:\common\TY_Lib\DigitalSign\tysoft_co_kr.pfx" /p QCZWH7 /tr http://timestamp.digicert.com /td sha256 /fd sha256 $(TargetPath)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -146,22 +155,37 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <EntryPointSymbol>
+      </EntryPointSymbol>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <PostBuildEvent>
-      <Command>signtool.exe sign /f "D:\common\TY_Lib\DigitalSign\20190121-654824_CHAIN_tysoft_co_kr.pfx" /p NDPTUQ /tr http://sha256timestamp.ws.symantec.com/sha256/timestamp /td sha256 /fd sha256 $(TargetPath)</Command>
+      <Command>signtool.exe sign /v /a /f "D:\common\TY_Lib\DigitalSign\tysoft_co_kr.pfx" /p QCZWH7 /tr http://timestamp.digicert.com /td sha256 /fd sha256 $(TargetPath)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\Utils\gSoap\soapH.h" />
+    <ClInclude Include="..\Utils\gSoap\soapProxy.h" />
+    <ClInclude Include="..\Utils\gSoap\soapStub.h" />
+    <ClInclude Include="..\Utils\gSoap\stdsoap2.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="PipeMessage.h" />
     <ClInclude Include="PipeServer.h" />
     <ClInclude Include="PipeStatusServer.h" />
+    <ClInclude Include="StatusLog.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Utils\gSoap\soapC.cpp" />
+    <ClCompile Include="..\Utils\gSoap\soapProxy.cpp" />
+    <ClCompile Include="..\Utils\gSoap\stdsoap2.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="PipeMessage.cpp" />
     <ClCompile Include="PipeServer.cpp" />
     <ClCompile Include="PipeStatusServer.cpp" />
+    <ClCompile Include="StatusLog.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Utils\gSoap\markisa.nsmap" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

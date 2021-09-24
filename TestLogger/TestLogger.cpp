@@ -6,6 +6,7 @@
 #include "Logger.h"
 #include "PipeServer.h"
 #include "PipeStatusServer.h"
+#include "StatusLog.h"
 
 #ifdef _DEBUG
   #ifndef _X64
@@ -67,6 +68,17 @@ int _tmain(int argc, _TCHAR* argv[])
   bRet = pStatServer->Initialize(_T("TY_RCV119_1044"));
   pStatServer->TransmitMessage(_T("123|456|789|234|567"));
   
+  CStatusLog* pStatusLog = CStatusLog::GetInstance();
+
+  pStatusLog->SetEnableStatus(true);
+//   pStatusLog->SetSoapIP(m_pConfig->GetStatusSoapIP());
+//   pStatusLog->SetSoapPort(m_pConfig->GetStatusSoapPort());
+//   pStatusLog->SetConnectTimeout(m_pConfig->GetStatusConnectTimeout());
+//   pStatusLog->SetAcceptTimeout(m_pConfig->GetStatusAcceptTimeout());
+//   pStatusLog->SetSendTimeout(m_pConfig->GetStatusSendTimeout());
+//   pStatusLog->SetRecvTimeout(m_pConfig->GetStatusRecvTimeout());
+//   pStatusLog->SetAETitle(m_pConfig->GetServiceName());
+//   pStatusLog->MakeSoapAddress();
 
   for (int i=0; i<10; i++)
   {
@@ -91,6 +103,8 @@ int _tmain(int argc, _TCHAR* argv[])
     PIPE_STATUS(strMsg01 + _T("1"));
     PIPE_STATUS(strMsg00 + _T("2"));
     PIPE_STATUS(strMsg01 + _T("2"));
+
+    STATUS_ERRONLY_ASYNC(_T("%d %s %s"), nDec, strTest.c_str(), strEng);
   }
 
 #ifdef _DEBUG

@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{a1eca333-762a-4066-9a3b-1ecb35148453}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils\gSoap">
+      <UniqueIdentifier>{4c889523-66a7-4b8b-8bfa-62fb25cc0b4b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Logger.h">
@@ -26,6 +32,21 @@
     </ClInclude>
     <ClInclude Include="PipeStatusServer.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StatusLog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Utils\gSoap\soapH.h">
+      <Filter>Utils\gSoap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Utils\gSoap\soapProxy.h">
+      <Filter>Utils\gSoap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Utils\gSoap\soapStub.h">
+      <Filter>Utils\gSoap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Utils\gSoap\stdsoap2.h">
+      <Filter>Utils\gSoap</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -41,5 +62,22 @@
     <ClCompile Include="PipeStatusServer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="StatusLog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Utils\gSoap\soapC.cpp">
+      <Filter>Utils\gSoap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Utils\gSoap\soapProxy.cpp">
+      <Filter>Utils\gSoap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Utils\gSoap\stdsoap2.cpp">
+      <Filter>Utils\gSoap</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Utils\gSoap\markisa.nsmap">
+      <Filter>Utils\gSoap</Filter>
+    </None>
   </ItemGroup>
 </Project>
