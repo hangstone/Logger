@@ -86,6 +86,51 @@ SOAP_FMAC3 int * SOAP_FMAC4 soap_get_int(struct soap*, int *, const char*, const
 #endif
 
 
+/* _hangpacs__CommandStation is a typedef element/attribute synonym for CommandStation */
+
+#ifndef SOAP_TYPE__hangpacs__CommandStation
+#define SOAP_TYPE__hangpacs__CommandStation (64)
+#endif
+
+#define soap_default__hangpacs__CommandStation(soap, a) soap_default_CommandStation(soap, a)
+
+
+#define soap_out__hangpacs__CommandStation soap_out_CommandStation
+
+
+#define soap_in__hangpacs__CommandStation soap_in_CommandStation
+
+
+#define soap_put__hangpacs__CommandStation soap_put_CommandStation
+
+
+#define soap_get__hangpacs__CommandStation soap_get_CommandStation
+
+
+#ifndef SOAP_TYPE_CommandStation
+#define SOAP_TYPE_CommandStation (63)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default_CommandStation(struct soap*, enum CommandStation *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_CommandStation(struct soap*, const char*, int, const enum CommandStation *, const char*);
+
+SOAP_FMAC3S const char* SOAP_FMAC4S soap_CommandStation2s(struct soap*, enum CommandStation);
+SOAP_FMAC3 enum CommandStation * SOAP_FMAC4 soap_in_CommandStation(struct soap*, const char*, enum CommandStation *, const char*);
+
+SOAP_FMAC3S int SOAP_FMAC4S soap_s2CommandStation(struct soap*, const char*, enum CommandStation *);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_CommandStation(struct soap*, const enum CommandStation *, const char*, const char*);
+
+#ifndef soap_write_CommandStation
+#define soap_write_CommandStation(soap, data) ( soap_free_temp(soap), soap_begin_send(soap) || (soap_serialize_CommandStation(soap, data),0) || soap_put_CommandStation(soap, data, "CommandStation", NULL) || soap_end_send(soap), (soap)->error )
+#endif
+
+SOAP_FMAC3 enum CommandStation * SOAP_FMAC4 soap_get_CommandStation(struct soap*, enum CommandStation *, const char*, const char*);
+
+#ifndef soap_read_CommandStation
+#define soap_read_CommandStation(soap, data) ( soap_begin_recv(soap) || !soap_get_CommandStation(soap, data, NULL, NULL) || soap_end_recv(soap), (soap)->error )
+#endif
+
+
 #ifndef SOAP_TYPE_bool
 #define SOAP_TYPE_bool (16)
 #endif
@@ -154,6 +199,35 @@ SOAP_FMAC3 enum Processing * SOAP_FMAC4 soap_get_Processing(struct soap*, enum P
 #define soap_read_Processing(soap, data) ( soap_begin_recv(soap) || !soap_get_Processing(soap, data, NULL, NULL) || soap_end_recv(soap), (soap)->error )
 #endif
 
+
+#ifndef SOAP_TYPE__fsres__CFindStationResponse
+#define SOAP_TYPE__fsres__CFindStationResponse (60)
+#endif
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__fsres__CFindStationResponse(struct soap*, const char*, int, const _fsres__CFindStationResponse *, const char*);
+SOAP_FMAC3 _fsres__CFindStationResponse * SOAP_FMAC4 soap_in__fsres__CFindStationResponse(struct soap*, const char*, _fsres__CFindStationResponse *, const char*);
+
+#ifndef soap_write__fsres__CFindStationResponse
+#define soap_write__fsres__CFindStationResponse(soap, data) ( soap_free_temp(soap), soap_begin_send(soap) || ((data)->soap_serialize(soap),0) || (data)->soap_put(soap, "fsres:CFindStationResponse", NULL) || soap_end_send(soap), (soap)->error )
+#endif
+
+SOAP_FMAC3 _fsres__CFindStationResponse * SOAP_FMAC4 soap_get__fsres__CFindStationResponse(struct soap*, _fsres__CFindStationResponse *, const char*, const char*);
+
+#ifndef soap_read__fsres__CFindStationResponse
+#define soap_read__fsres__CFindStationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get__fsres__CFindStationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), (soap)->error )
+#endif
+
+SOAP_FMAC1 _fsres__CFindStationResponse * SOAP_FMAC2 soap_instantiate__fsres__CFindStationResponse(struct soap*, int, const char*, const char*, size_t*);
+
+inline _fsres__CFindStationResponse * soap_new__fsres__CFindStationResponse(struct soap *soap, int n = -1) { return soap_instantiate__fsres__CFindStationResponse(soap, n, NULL, NULL, NULL); }
+
+inline _fsres__CFindStationResponse * soap_new_req__fsres__CFindStationResponse(struct soap *soap) { _fsres__CFindStationResponse *_p = soap_instantiate__fsres__CFindStationResponse(soap, -1, NULL, NULL, NULL); if (_p) { _p->soap_default(soap); } return _p; }
+
+inline _fsres__CFindStationResponse * soap_new_set__fsres__CFindStationResponse(struct soap *soap, std::list<struct FindStationResponse >& m_listResponse) { _fsres__CFindStationResponse *_p = soap_instantiate__fsres__CFindStationResponse(soap, -1, NULL, NULL, NULL); if (_p) { _p->soap_default(soap); _p->_fsres__CFindStationResponse::m_listResponse = m_listResponse; } return _p; }
+
+inline void soap_delete__fsres__CFindStationResponse(struct soap *soap, _fsres__CFindStationResponse *p) { soap_delete(soap, p); }
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy__fsres__CFindStationResponse(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE__rlres__CReadLogResponse
 #define SOAP_TYPE__rlres__CReadLogResponse (52)
@@ -248,7 +322,7 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__wstring(struct soap*, int, int, void*,
 #ifndef WITH_NOGLOBAL
 
 #ifndef SOAP_TYPE_SOAP_ENV__Fault
-#define SOAP_TYPE_SOAP_ENV__Fault (82)
+#define SOAP_TYPE_SOAP_ENV__Fault (104)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_SOAP_ENV__Fault(struct soap*, struct SOAP_ENV__Fault *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_SOAP_ENV__Fault(struct soap*, const struct SOAP_ENV__Fault *);
@@ -284,7 +358,7 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_SOAP_ENV__Fault(struct soap*, int, int, voi
 #ifndef WITH_NOGLOBAL
 
 #ifndef SOAP_TYPE_SOAP_ENV__Reason
-#define SOAP_TYPE_SOAP_ENV__Reason (81)
+#define SOAP_TYPE_SOAP_ENV__Reason (103)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_SOAP_ENV__Reason(struct soap*, struct SOAP_ENV__Reason *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_SOAP_ENV__Reason(struct soap*, const struct SOAP_ENV__Reason *);
@@ -320,7 +394,7 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_SOAP_ENV__Reason(struct soap*, int, int, vo
 #ifndef WITH_NOGLOBAL
 
 #ifndef SOAP_TYPE_SOAP_ENV__Detail
-#define SOAP_TYPE_SOAP_ENV__Detail (79)
+#define SOAP_TYPE_SOAP_ENV__Detail (101)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_SOAP_ENV__Detail(struct soap*, struct SOAP_ENV__Detail *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_SOAP_ENV__Detail(struct soap*, const struct SOAP_ENV__Detail *);
@@ -356,7 +430,7 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_SOAP_ENV__Detail(struct soap*, int, int, vo
 #ifndef WITH_NOGLOBAL
 
 #ifndef SOAP_TYPE_SOAP_ENV__Code
-#define SOAP_TYPE_SOAP_ENV__Code (77)
+#define SOAP_TYPE_SOAP_ENV__Code (99)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_SOAP_ENV__Code(struct soap*, struct SOAP_ENV__Code *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_SOAP_ENV__Code(struct soap*, const struct SOAP_ENV__Code *);
@@ -392,7 +466,7 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_SOAP_ENV__Code(struct soap*, int, int, void
 #ifndef WITH_NOGLOBAL
 
 #ifndef SOAP_TYPE_SOAP_ENV__Header
-#define SOAP_TYPE_SOAP_ENV__Header (76)
+#define SOAP_TYPE_SOAP_ENV__Header (98)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_SOAP_ENV__Header(struct soap*, struct SOAP_ENV__Header *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_SOAP_ENV__Header(struct soap*, const struct SOAP_ENV__Header *);
@@ -425,8 +499,72 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_SOAP_ENV__Header(struct soap*, int, int, vo
 
 #endif
 
+#ifndef SOAP_TYPE_hangpacs__CommandStation
+#define SOAP_TYPE_hangpacs__CommandStation (97)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default_hangpacs__CommandStation(struct soap*, struct hangpacs__CommandStation *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_hangpacs__CommandStation(struct soap*, const struct hangpacs__CommandStation *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_hangpacs__CommandStation(struct soap*, const char*, int, const struct hangpacs__CommandStation *, const char*);
+SOAP_FMAC3 struct hangpacs__CommandStation * SOAP_FMAC4 soap_in_hangpacs__CommandStation(struct soap*, const char*, struct hangpacs__CommandStation *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_hangpacs__CommandStation(struct soap*, const struct hangpacs__CommandStation *, const char*, const char*);
+
+#ifndef soap_write_hangpacs__CommandStation
+#define soap_write_hangpacs__CommandStation(soap, data) ( soap_free_temp(soap), soap_begin_send(soap) || (soap_serialize_hangpacs__CommandStation(soap, data),0) || soap_put_hangpacs__CommandStation(soap, data, "hangpacs:CommandStation", NULL) || soap_end_send(soap), (soap)->error )
+#endif
+
+SOAP_FMAC3 struct hangpacs__CommandStation * SOAP_FMAC4 soap_get_hangpacs__CommandStation(struct soap*, struct hangpacs__CommandStation *, const char*, const char*);
+
+#ifndef soap_read_hangpacs__CommandStation
+#define soap_read_hangpacs__CommandStation(soap, data) ( soap_begin_recv(soap) || !soap_get_hangpacs__CommandStation(soap, data, NULL, NULL) || soap_end_recv(soap), (soap)->error )
+#endif
+
+SOAP_FMAC1 struct hangpacs__CommandStation * SOAP_FMAC2 soap_instantiate_hangpacs__CommandStation(struct soap*, int, const char*, const char*, size_t*);
+
+inline struct hangpacs__CommandStation * soap_new_hangpacs__CommandStation(struct soap *soap, int n = -1) { return soap_instantiate_hangpacs__CommandStation(soap, n, NULL, NULL, NULL); }
+
+inline struct hangpacs__CommandStation * soap_new_req_hangpacs__CommandStation(struct soap *soap, struct csreq__CommandStationRequest& stReqMsg) { struct hangpacs__CommandStation *_p = soap_instantiate_hangpacs__CommandStation(soap, -1, NULL, NULL, NULL); if (_p) { soap_default_hangpacs__CommandStation(soap, _p); _p->stReqMsg = stReqMsg; } return _p; }
+
+inline struct hangpacs__CommandStation * soap_new_set_hangpacs__CommandStation(struct soap *soap, struct csreq__CommandStationRequest& stReqMsg) { struct hangpacs__CommandStation *_p = soap_instantiate_hangpacs__CommandStation(soap, -1, NULL, NULL, NULL); if (_p) { soap_default_hangpacs__CommandStation(soap, _p); _p->stReqMsg = stReqMsg; } return _p; }
+
+inline void soap_delete_hangpacs__CommandStation(struct soap *soap, struct hangpacs__CommandStation *p) { soap_delete(soap, p); }
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_hangpacs__CommandStation(struct soap*, int, int, void*, size_t, const void*, size_t);
+
+#ifndef SOAP_TYPE_hangpacs__FindStation
+#define SOAP_TYPE_hangpacs__FindStation (94)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default_hangpacs__FindStation(struct soap*, struct hangpacs__FindStation *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_hangpacs__FindStation(struct soap*, const struct hangpacs__FindStation *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_hangpacs__FindStation(struct soap*, const char*, int, const struct hangpacs__FindStation *, const char*);
+SOAP_FMAC3 struct hangpacs__FindStation * SOAP_FMAC4 soap_in_hangpacs__FindStation(struct soap*, const char*, struct hangpacs__FindStation *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_hangpacs__FindStation(struct soap*, const struct hangpacs__FindStation *, const char*, const char*);
+
+#ifndef soap_write_hangpacs__FindStation
+#define soap_write_hangpacs__FindStation(soap, data) ( soap_free_temp(soap), soap_begin_send(soap) || (soap_serialize_hangpacs__FindStation(soap, data),0) || soap_put_hangpacs__FindStation(soap, data, "hangpacs:FindStation", NULL) || soap_end_send(soap), (soap)->error )
+#endif
+
+SOAP_FMAC3 struct hangpacs__FindStation * SOAP_FMAC4 soap_get_hangpacs__FindStation(struct soap*, struct hangpacs__FindStation *, const char*, const char*);
+
+#ifndef soap_read_hangpacs__FindStation
+#define soap_read_hangpacs__FindStation(soap, data) ( soap_begin_recv(soap) || !soap_get_hangpacs__FindStation(soap, data, NULL, NULL) || soap_end_recv(soap), (soap)->error )
+#endif
+
+SOAP_FMAC1 struct hangpacs__FindStation * SOAP_FMAC2 soap_instantiate_hangpacs__FindStation(struct soap*, int, const char*, const char*, size_t*);
+
+inline struct hangpacs__FindStation * soap_new_hangpacs__FindStation(struct soap *soap, int n = -1) { return soap_instantiate_hangpacs__FindStation(soap, n, NULL, NULL, NULL); }
+
+inline struct hangpacs__FindStation * soap_new_req_hangpacs__FindStation(struct soap *soap, struct fsreq__FindStationRequest& stReqMsg) { struct hangpacs__FindStation *_p = soap_instantiate_hangpacs__FindStation(soap, -1, NULL, NULL, NULL); if (_p) { soap_default_hangpacs__FindStation(soap, _p); _p->stReqMsg = stReqMsg; } return _p; }
+
+inline struct hangpacs__FindStation * soap_new_set_hangpacs__FindStation(struct soap *soap, struct fsreq__FindStationRequest& stReqMsg) { struct hangpacs__FindStation *_p = soap_instantiate_hangpacs__FindStation(soap, -1, NULL, NULL, NULL); if (_p) { soap_default_hangpacs__FindStation(soap, _p); _p->stReqMsg = stReqMsg; } return _p; }
+
+inline void soap_delete_hangpacs__FindStation(struct soap *soap, struct hangpacs__FindStation *p) { soap_delete(soap, p); }
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_hangpacs__FindStation(struct soap*, int, int, void*, size_t, const void*, size_t);
+
 #ifndef SOAP_TYPE_hangpacs__ReadLog
-#define SOAP_TYPE_hangpacs__ReadLog (75)
+#define SOAP_TYPE_hangpacs__ReadLog (91)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_hangpacs__ReadLog(struct soap*, struct hangpacs__ReadLog *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_hangpacs__ReadLog(struct soap*, const struct hangpacs__ReadLog *);
@@ -458,7 +596,7 @@ inline void soap_delete_hangpacs__ReadLog(struct soap *soap, struct hangpacs__Re
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_hangpacs__ReadLog(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_hangpacs__WriteLogAsync
-#define SOAP_TYPE_hangpacs__WriteLogAsync (72)
+#define SOAP_TYPE_hangpacs__WriteLogAsync (88)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_hangpacs__WriteLogAsync(struct soap*, struct hangpacs__WriteLogAsync *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_hangpacs__WriteLogAsync(struct soap*, const struct hangpacs__WriteLogAsync *);
@@ -490,7 +628,7 @@ inline void soap_delete_hangpacs__WriteLogAsync(struct soap *soap, struct hangpa
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_hangpacs__WriteLogAsync(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_hangpacs__WriteLog
-#define SOAP_TYPE_hangpacs__WriteLog (69)
+#define SOAP_TYPE_hangpacs__WriteLog (85)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_hangpacs__WriteLog(struct soap*, struct hangpacs__WriteLog *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_hangpacs__WriteLog(struct soap*, const struct hangpacs__WriteLog *);
@@ -522,7 +660,7 @@ inline void soap_delete_hangpacs__WriteLog(struct soap *soap, struct hangpacs__W
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_hangpacs__WriteLog(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_hangpacs__FindReceiver
-#define SOAP_TYPE_hangpacs__FindReceiver (66)
+#define SOAP_TYPE_hangpacs__FindReceiver (82)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_hangpacs__FindReceiver(struct soap*, struct hangpacs__FindReceiver *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_hangpacs__FindReceiver(struct soap*, const struct hangpacs__FindReceiver *);
@@ -554,7 +692,7 @@ inline void soap_delete_hangpacs__FindReceiver(struct soap *soap, struct hangpac
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_hangpacs__FindReceiver(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_hangpacs__RefreshRequest
-#define SOAP_TYPE_hangpacs__RefreshRequest (63)
+#define SOAP_TYPE_hangpacs__RefreshRequest (79)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_hangpacs__RefreshRequest(struct soap*, struct hangpacs__RefreshRequest *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_hangpacs__RefreshRequest(struct soap*, const struct hangpacs__RefreshRequest *);
@@ -586,7 +724,7 @@ inline void soap_delete_hangpacs__RefreshRequest(struct soap *soap, struct hangp
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_hangpacs__RefreshRequest(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_hangpacs__ReadRequest
-#define SOAP_TYPE_hangpacs__ReadRequest (60)
+#define SOAP_TYPE_hangpacs__ReadRequest (76)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_hangpacs__ReadRequest(struct soap*, struct hangpacs__ReadRequest *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_hangpacs__ReadRequest(struct soap*, const struct hangpacs__ReadRequest *);
@@ -618,7 +756,7 @@ inline void soap_delete_hangpacs__ReadRequest(struct soap *soap, struct hangpacs
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_hangpacs__ReadRequest(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_hangpacs__WriteRequest
-#define SOAP_TYPE_hangpacs__WriteRequest (57)
+#define SOAP_TYPE_hangpacs__WriteRequest (73)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_hangpacs__WriteRequest(struct soap*, struct hangpacs__WriteRequest *);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_hangpacs__WriteRequest(struct soap*, const struct hangpacs__WriteRequest *);
@@ -648,6 +786,378 @@ inline struct hangpacs__WriteRequest * soap_new_set_hangpacs__WriteRequest(struc
 inline void soap_delete_hangpacs__WriteRequest(struct soap *soap, struct hangpacs__WriteRequest *p) { soap_delete(soap, p); }
 
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_hangpacs__WriteRequest(struct soap*, int, int, void*, size_t, const void*, size_t);
+
+#ifndef SOAP_TYPE_csres__CommandStationResponse
+#define SOAP_TYPE_csres__CommandStationResponse (70)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default_csres__CommandStationResponse(struct soap*, struct csres__CommandStationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_csres__CommandStationResponse(struct soap*, const struct csres__CommandStationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_csres__CommandStationResponse(struct soap*, const char*, int, const struct csres__CommandStationResponse *, const char*);
+SOAP_FMAC3 struct csres__CommandStationResponse * SOAP_FMAC4 soap_in_csres__CommandStationResponse(struct soap*, const char*, struct csres__CommandStationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_csres__CommandStationResponse(struct soap*, const struct csres__CommandStationResponse *, const char*, const char*);
+
+#ifndef soap_write_csres__CommandStationResponse
+#define soap_write_csres__CommandStationResponse(soap, data) ( soap_free_temp(soap), soap_begin_send(soap) || (soap_serialize_csres__CommandStationResponse(soap, data),0) || soap_put_csres__CommandStationResponse(soap, data, "csres:CommandStationResponse", NULL) || soap_end_send(soap), (soap)->error )
+#endif
+
+SOAP_FMAC3 struct csres__CommandStationResponse * SOAP_FMAC4 soap_get_csres__CommandStationResponse(struct soap*, struct csres__CommandStationResponse *, const char*, const char*);
+
+#ifndef soap_read_csres__CommandStationResponse
+#define soap_read_csres__CommandStationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_csres__CommandStationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), (soap)->error )
+#endif
+
+SOAP_FMAC1 struct csres__CommandStationResponse * SOAP_FMAC2 soap_instantiate_csres__CommandStationResponse(struct soap*, int, const char*, const char*, size_t*);
+
+inline struct csres__CommandStationResponse * soap_new_csres__CommandStationResponse(struct soap *soap, int n = -1) { return soap_instantiate_csres__CommandStationResponse(soap, n, NULL, NULL, NULL); }
+
+inline struct csres__CommandStationResponse * soap_new_req_csres__CommandStationResponse(struct soap *soap, struct CommandStationResponse& return_) { struct csres__CommandStationResponse *_p = soap_instantiate_csres__CommandStationResponse(soap, -1, NULL, NULL, NULL); if (_p) { soap_default_csres__CommandStationResponse(soap, _p); _p->return_ = return_; } return _p; }
+
+inline struct csres__CommandStationResponse * soap_new_set_csres__CommandStationResponse(struct soap *soap, struct CommandStationResponse& return_) { struct csres__CommandStationResponse *_p = soap_instantiate_csres__CommandStationResponse(soap, -1, NULL, NULL, NULL); if (_p) { soap_default_csres__CommandStationResponse(soap, _p); _p->return_ = return_; } return _p; }
+
+inline void soap_delete_csres__CommandStationResponse(struct soap *soap, struct csres__CommandStationResponse *p) { soap_delete(soap, p); }
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_csres__CommandStationResponse(struct soap*, int, int, void*, size_t, const void*, size_t);
+
+/* _csres_CommandStationResponse is a typedef element/attribute synonym for CommandStationResponse */
+
+#ifndef SOAP_TYPE__csres_CommandStationResponse
+#define SOAP_TYPE__csres_CommandStationResponse (69)
+#endif
+
+#define soap_default__csres_CommandStationResponse(soap, a) soap_default_CommandStationResponse(soap, a)
+
+
+#define soap_serialize__csres_CommandStationResponse soap_serialize_CommandStationResponse
+
+
+#define soap_out__csres_CommandStationResponse soap_out_CommandStationResponse
+
+
+#define soap_in__csres_CommandStationResponse soap_in_CommandStationResponse
+
+
+#define soap_put__csres_CommandStationResponse soap_put_CommandStationResponse
+
+
+#define soap_get__csres_CommandStationResponse soap_get_CommandStationResponse
+
+
+#define soap_instantiate__csres_CommandStationResponse soap_instantiate_CommandStationResponse
+
+
+#define soap_copy__csres_CommandStationResponse soap_copy_CommandStationResponse
+
+#ifndef SOAP_TYPE_CommandStationResponse
+#define SOAP_TYPE_CommandStationResponse (68)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default_CommandStationResponse(struct soap*, struct CommandStationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_CommandStationResponse(struct soap*, const struct CommandStationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_CommandStationResponse(struct soap*, const char*, int, const struct CommandStationResponse *, const char*);
+SOAP_FMAC3 struct CommandStationResponse * SOAP_FMAC4 soap_in_CommandStationResponse(struct soap*, const char*, struct CommandStationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_CommandStationResponse(struct soap*, const struct CommandStationResponse *, const char*, const char*);
+
+#ifndef soap_write_CommandStationResponse
+#define soap_write_CommandStationResponse(soap, data) ( soap_free_temp(soap), soap_begin_send(soap) || (soap_serialize_CommandStationResponse(soap, data),0) || soap_put_CommandStationResponse(soap, data, "CommandStationResponse", NULL) || soap_end_send(soap), (soap)->error )
+#endif
+
+SOAP_FMAC3 struct CommandStationResponse * SOAP_FMAC4 soap_get_CommandStationResponse(struct soap*, struct CommandStationResponse *, const char*, const char*);
+
+#ifndef soap_read_CommandStationResponse
+#define soap_read_CommandStationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_CommandStationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), (soap)->error )
+#endif
+
+SOAP_FMAC1 struct CommandStationResponse * SOAP_FMAC2 soap_instantiate_CommandStationResponse(struct soap*, int, const char*, const char*, size_t*);
+
+inline struct CommandStationResponse * soap_new_CommandStationResponse(struct soap *soap, int n = -1) { return soap_instantiate_CommandStationResponse(soap, n, NULL, NULL, NULL); }
+
+inline struct CommandStationResponse * soap_new_req_CommandStationResponse(struct soap *soap, bool bDummy) { struct CommandStationResponse *_p = soap_instantiate_CommandStationResponse(soap, -1, NULL, NULL, NULL); if (_p) { soap_default_CommandStationResponse(soap, _p); _p->bDummy = bDummy; } return _p; }
+
+inline struct CommandStationResponse * soap_new_set_CommandStationResponse(struct soap *soap, bool bDummy) { struct CommandStationResponse *_p = soap_instantiate_CommandStationResponse(soap, -1, NULL, NULL, NULL); if (_p) { soap_default_CommandStationResponse(soap, _p); _p->bDummy = bDummy; } return _p; }
+
+inline void soap_delete_CommandStationResponse(struct soap *soap, struct CommandStationResponse *p) { soap_delete(soap, p); }
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_CommandStationResponse(struct soap*, int, int, void*, size_t, const void*, size_t);
+
+#ifndef SOAP_TYPE_csreq__CommandStationRequest
+#define SOAP_TYPE_csreq__CommandStationRequest (67)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default_csreq__CommandStationRequest(struct soap*, struct csreq__CommandStationRequest *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_csreq__CommandStationRequest(struct soap*, const struct csreq__CommandStationRequest *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_csreq__CommandStationRequest(struct soap*, const char*, int, const struct csreq__CommandStationRequest *, const char*);
+SOAP_FMAC3 struct csreq__CommandStationRequest * SOAP_FMAC4 soap_in_csreq__CommandStationRequest(struct soap*, const char*, struct csreq__CommandStationRequest *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_csreq__CommandStationRequest(struct soap*, const struct csreq__CommandStationRequest *, const char*, const char*);
+
+#ifndef soap_write_csreq__CommandStationRequest
+#define soap_write_csreq__CommandStationRequest(soap, data) ( soap_free_temp(soap), soap_begin_send(soap) || (soap_serialize_csreq__CommandStationRequest(soap, data),0) || soap_put_csreq__CommandStationRequest(soap, data, "csreq:CommandStationRequest", NULL) || soap_end_send(soap), (soap)->error )
+#endif
+
+SOAP_FMAC3 struct csreq__CommandStationRequest * SOAP_FMAC4 soap_get_csreq__CommandStationRequest(struct soap*, struct csreq__CommandStationRequest *, const char*, const char*);
+
+#ifndef soap_read_csreq__CommandStationRequest
+#define soap_read_csreq__CommandStationRequest(soap, data) ( soap_begin_recv(soap) || !soap_get_csreq__CommandStationRequest(soap, data, NULL, NULL) || soap_end_recv(soap), (soap)->error )
+#endif
+
+SOAP_FMAC1 struct csreq__CommandStationRequest * SOAP_FMAC2 soap_instantiate_csreq__CommandStationRequest(struct soap*, int, const char*, const char*, size_t*);
+
+inline struct csreq__CommandStationRequest * soap_new_csreq__CommandStationRequest(struct soap *soap, int n = -1) { return soap_instantiate_csreq__CommandStationRequest(soap, n, NULL, NULL, NULL); }
+
+inline struct csreq__CommandStationRequest * soap_new_req_csreq__CommandStationRequest(struct soap *soap, struct CommandStationRequest& retrun_) { struct csreq__CommandStationRequest *_p = soap_instantiate_csreq__CommandStationRequest(soap, -1, NULL, NULL, NULL); if (_p) { soap_default_csreq__CommandStationRequest(soap, _p); _p->retrun_ = retrun_; } return _p; }
+
+inline struct csreq__CommandStationRequest * soap_new_set_csreq__CommandStationRequest(struct soap *soap, struct CommandStationRequest& retrun_) { struct csreq__CommandStationRequest *_p = soap_instantiate_csreq__CommandStationRequest(soap, -1, NULL, NULL, NULL); if (_p) { soap_default_csreq__CommandStationRequest(soap, _p); _p->retrun_ = retrun_; } return _p; }
+
+inline void soap_delete_csreq__CommandStationRequest(struct soap *soap, struct csreq__CommandStationRequest *p) { soap_delete(soap, p); }
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_csreq__CommandStationRequest(struct soap*, int, int, void*, size_t, const void*, size_t);
+
+/* _csreq_CommandStationRequest is a typedef element/attribute synonym for CommandStationRequest */
+
+#ifndef SOAP_TYPE__csreq_CommandStationRequest
+#define SOAP_TYPE__csreq_CommandStationRequest (66)
+#endif
+
+#define soap_default__csreq_CommandStationRequest(soap, a) soap_default_CommandStationRequest(soap, a)
+
+
+#define soap_serialize__csreq_CommandStationRequest soap_serialize_CommandStationRequest
+
+
+#define soap_out__csreq_CommandStationRequest soap_out_CommandStationRequest
+
+
+#define soap_in__csreq_CommandStationRequest soap_in_CommandStationRequest
+
+
+#define soap_put__csreq_CommandStationRequest soap_put_CommandStationRequest
+
+
+#define soap_get__csreq_CommandStationRequest soap_get_CommandStationRequest
+
+
+#define soap_instantiate__csreq_CommandStationRequest soap_instantiate_CommandStationRequest
+
+
+#define soap_copy__csreq_CommandStationRequest soap_copy_CommandStationRequest
+
+#ifndef SOAP_TYPE_CommandStationRequest
+#define SOAP_TYPE_CommandStationRequest (65)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default_CommandStationRequest(struct soap*, struct CommandStationRequest *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_CommandStationRequest(struct soap*, const struct CommandStationRequest *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_CommandStationRequest(struct soap*, const char*, int, const struct CommandStationRequest *, const char*);
+SOAP_FMAC3 struct CommandStationRequest * SOAP_FMAC4 soap_in_CommandStationRequest(struct soap*, const char*, struct CommandStationRequest *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_CommandStationRequest(struct soap*, const struct CommandStationRequest *, const char*, const char*);
+
+#ifndef soap_write_CommandStationRequest
+#define soap_write_CommandStationRequest(soap, data) ( soap_free_temp(soap), soap_begin_send(soap) || (soap_serialize_CommandStationRequest(soap, data),0) || soap_put_CommandStationRequest(soap, data, "CommandStationRequest", NULL) || soap_end_send(soap), (soap)->error )
+#endif
+
+SOAP_FMAC3 struct CommandStationRequest * SOAP_FMAC4 soap_get_CommandStationRequest(struct soap*, struct CommandStationRequest *, const char*, const char*);
+
+#ifndef soap_read_CommandStationRequest
+#define soap_read_CommandStationRequest(soap, data) ( soap_begin_recv(soap) || !soap_get_CommandStationRequest(soap, data, NULL, NULL) || soap_end_recv(soap), (soap)->error )
+#endif
+
+SOAP_FMAC1 struct CommandStationRequest * SOAP_FMAC2 soap_instantiate_CommandStationRequest(struct soap*, int, const char*, const char*, size_t*);
+
+inline struct CommandStationRequest * soap_new_CommandStationRequest(struct soap *soap, int n = -1) { return soap_instantiate_CommandStationRequest(soap, n, NULL, NULL, NULL); }
+
+inline struct CommandStationRequest * soap_new_req_CommandStationRequest(struct soap *soap, enum CommandStation eCommand, std::wstring& strStationName) { struct CommandStationRequest *_p = soap_instantiate_CommandStationRequest(soap, -1, NULL, NULL, NULL); if (_p) { soap_default_CommandStationRequest(soap, _p); _p->eCommand = eCommand; _p->strStationName = strStationName; } return _p; }
+
+inline struct CommandStationRequest * soap_new_set_CommandStationRequest(struct soap *soap, enum CommandStation eCommand, std::wstring& strStationName) { struct CommandStationRequest *_p = soap_instantiate_CommandStationRequest(soap, -1, NULL, NULL, NULL); if (_p) { soap_default_CommandStationRequest(soap, _p); _p->eCommand = eCommand; _p->strStationName = strStationName; } return _p; }
+
+inline void soap_delete_CommandStationRequest(struct soap *soap, struct CommandStationRequest *p) { soap_delete(soap, p); }
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_CommandStationRequest(struct soap*, int, int, void*, size_t, const void*, size_t);
+
+#ifndef SOAP_TYPE_fsres__CFindStationResponse
+#define SOAP_TYPE_fsres__CFindStationResponse (62)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default_fsres__CFindStationResponse(struct soap*, struct fsres__CFindStationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_fsres__CFindStationResponse(struct soap*, const struct fsres__CFindStationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_fsres__CFindStationResponse(struct soap*, const char*, int, const struct fsres__CFindStationResponse *, const char*);
+SOAP_FMAC3 struct fsres__CFindStationResponse * SOAP_FMAC4 soap_in_fsres__CFindStationResponse(struct soap*, const char*, struct fsres__CFindStationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_fsres__CFindStationResponse(struct soap*, const struct fsres__CFindStationResponse *, const char*, const char*);
+
+#ifndef soap_write_fsres__CFindStationResponse
+#define soap_write_fsres__CFindStationResponse(soap, data) ( soap_free_temp(soap), soap_begin_send(soap) || (soap_serialize_fsres__CFindStationResponse(soap, data),0) || soap_put_fsres__CFindStationResponse(soap, data, "fsres:CFindStationResponse", NULL) || soap_end_send(soap), (soap)->error )
+#endif
+
+SOAP_FMAC3 struct fsres__CFindStationResponse * SOAP_FMAC4 soap_get_fsres__CFindStationResponse(struct soap*, struct fsres__CFindStationResponse *, const char*, const char*);
+
+#ifndef soap_read_fsres__CFindStationResponse
+#define soap_read_fsres__CFindStationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_fsres__CFindStationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), (soap)->error )
+#endif
+
+SOAP_FMAC1 struct fsres__CFindStationResponse * SOAP_FMAC2 soap_instantiate_fsres__CFindStationResponse(struct soap*, int, const char*, const char*, size_t*);
+
+inline struct fsres__CFindStationResponse * soap_new_fsres__CFindStationResponse(struct soap *soap, int n = -1) { return soap_instantiate_fsres__CFindStationResponse(soap, n, NULL, NULL, NULL); }
+
+inline struct fsres__CFindStationResponse * soap_new_req_fsres__CFindStationResponse(struct soap *soap, _fsres__CFindStationResponse& return_) { struct fsres__CFindStationResponse *_p = soap_instantiate_fsres__CFindStationResponse(soap, -1, NULL, NULL, NULL); if (_p) { soap_default_fsres__CFindStationResponse(soap, _p); _p->return_ = return_; } return _p; }
+
+inline struct fsres__CFindStationResponse * soap_new_set_fsres__CFindStationResponse(struct soap *soap, _fsres__CFindStationResponse& return_) { struct fsres__CFindStationResponse *_p = soap_instantiate_fsres__CFindStationResponse(soap, -1, NULL, NULL, NULL); if (_p) { soap_default_fsres__CFindStationResponse(soap, _p); _p->return_ = return_; } return _p; }
+
+inline void soap_delete_fsres__CFindStationResponse(struct soap *soap, struct fsres__CFindStationResponse *p) { soap_delete(soap, p); }
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fsres__CFindStationResponse(struct soap*, int, int, void*, size_t, const void*, size_t);
+
+/* _fsres_FindStationResponse is a typedef element/attribute synonym for FindStationResponse */
+
+#ifndef SOAP_TYPE__fsres_FindStationResponse
+#define SOAP_TYPE__fsres_FindStationResponse (59)
+#endif
+
+#define soap_default__fsres_FindStationResponse(soap, a) soap_default_FindStationResponse(soap, a)
+
+
+#define soap_serialize__fsres_FindStationResponse soap_serialize_FindStationResponse
+
+
+#define soap_out__fsres_FindStationResponse soap_out_FindStationResponse
+
+
+#define soap_in__fsres_FindStationResponse soap_in_FindStationResponse
+
+
+#define soap_put__fsres_FindStationResponse soap_put_FindStationResponse
+
+
+#define soap_get__fsres_FindStationResponse soap_get_FindStationResponse
+
+
+#define soap_instantiate__fsres_FindStationResponse soap_instantiate_FindStationResponse
+
+
+#define soap_copy__fsres_FindStationResponse soap_copy_FindStationResponse
+
+#ifndef SOAP_TYPE_FindStationResponse
+#define SOAP_TYPE_FindStationResponse (58)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default_FindStationResponse(struct soap*, struct FindStationResponse *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_FindStationResponse(struct soap*, const struct FindStationResponse *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_FindStationResponse(struct soap*, const char*, int, const struct FindStationResponse *, const char*);
+SOAP_FMAC3 struct FindStationResponse * SOAP_FMAC4 soap_in_FindStationResponse(struct soap*, const char*, struct FindStationResponse *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_FindStationResponse(struct soap*, const struct FindStationResponse *, const char*, const char*);
+
+#ifndef soap_write_FindStationResponse
+#define soap_write_FindStationResponse(soap, data) ( soap_free_temp(soap), soap_begin_send(soap) || (soap_serialize_FindStationResponse(soap, data),0) || soap_put_FindStationResponse(soap, data, "FindStationResponse", NULL) || soap_end_send(soap), (soap)->error )
+#endif
+
+SOAP_FMAC3 struct FindStationResponse * SOAP_FMAC4 soap_get_FindStationResponse(struct soap*, struct FindStationResponse *, const char*, const char*);
+
+#ifndef soap_read_FindStationResponse
+#define soap_read_FindStationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_FindStationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), (soap)->error )
+#endif
+
+SOAP_FMAC1 struct FindStationResponse * SOAP_FMAC2 soap_instantiate_FindStationResponse(struct soap*, int, const char*, const char*, size_t*);
+
+inline struct FindStationResponse * soap_new_FindStationResponse(struct soap *soap, int n = -1) { return soap_instantiate_FindStationResponse(soap, n, NULL, NULL, NULL); }
+
+inline struct FindStationResponse * soap_new_req_FindStationResponse(struct soap *soap, std::wstring& strIPAddress, std::wstring& strStationName, std::wstring& strStatus) { struct FindStationResponse *_p = soap_instantiate_FindStationResponse(soap, -1, NULL, NULL, NULL); if (_p) { soap_default_FindStationResponse(soap, _p); _p->strIPAddress = strIPAddress; _p->strStationName = strStationName; _p->strStatus = strStatus; } return _p; }
+
+inline struct FindStationResponse * soap_new_set_FindStationResponse(struct soap *soap, std::wstring& strIPAddress, std::wstring& strStationName, std::wstring& strStatus) { struct FindStationResponse *_p = soap_instantiate_FindStationResponse(soap, -1, NULL, NULL, NULL); if (_p) { soap_default_FindStationResponse(soap, _p); _p->strIPAddress = strIPAddress; _p->strStationName = strStationName; _p->strStatus = strStatus; } return _p; }
+
+inline void soap_delete_FindStationResponse(struct soap *soap, struct FindStationResponse *p) { soap_delete(soap, p); }
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_FindStationResponse(struct soap*, int, int, void*, size_t, const void*, size_t);
+
+#ifndef SOAP_TYPE_fsreq__FindStationRequest
+#define SOAP_TYPE_fsreq__FindStationRequest (57)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default_fsreq__FindStationRequest(struct soap*, struct fsreq__FindStationRequest *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_fsreq__FindStationRequest(struct soap*, const struct fsreq__FindStationRequest *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_fsreq__FindStationRequest(struct soap*, const char*, int, const struct fsreq__FindStationRequest *, const char*);
+SOAP_FMAC3 struct fsreq__FindStationRequest * SOAP_FMAC4 soap_in_fsreq__FindStationRequest(struct soap*, const char*, struct fsreq__FindStationRequest *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_fsreq__FindStationRequest(struct soap*, const struct fsreq__FindStationRequest *, const char*, const char*);
+
+#ifndef soap_write_fsreq__FindStationRequest
+#define soap_write_fsreq__FindStationRequest(soap, data) ( soap_free_temp(soap), soap_begin_send(soap) || (soap_serialize_fsreq__FindStationRequest(soap, data),0) || soap_put_fsreq__FindStationRequest(soap, data, "fsreq:FindStationRequest", NULL) || soap_end_send(soap), (soap)->error )
+#endif
+
+SOAP_FMAC3 struct fsreq__FindStationRequest * SOAP_FMAC4 soap_get_fsreq__FindStationRequest(struct soap*, struct fsreq__FindStationRequest *, const char*, const char*);
+
+#ifndef soap_read_fsreq__FindStationRequest
+#define soap_read_fsreq__FindStationRequest(soap, data) ( soap_begin_recv(soap) || !soap_get_fsreq__FindStationRequest(soap, data, NULL, NULL) || soap_end_recv(soap), (soap)->error )
+#endif
+
+SOAP_FMAC1 struct fsreq__FindStationRequest * SOAP_FMAC2 soap_instantiate_fsreq__FindStationRequest(struct soap*, int, const char*, const char*, size_t*);
+
+inline struct fsreq__FindStationRequest * soap_new_fsreq__FindStationRequest(struct soap *soap, int n = -1) { return soap_instantiate_fsreq__FindStationRequest(soap, n, NULL, NULL, NULL); }
+
+inline struct fsreq__FindStationRequest * soap_new_req_fsreq__FindStationRequest(struct soap *soap, struct FindStationRequest& return_) { struct fsreq__FindStationRequest *_p = soap_instantiate_fsreq__FindStationRequest(soap, -1, NULL, NULL, NULL); if (_p) { soap_default_fsreq__FindStationRequest(soap, _p); _p->return_ = return_; } return _p; }
+
+inline struct fsreq__FindStationRequest * soap_new_set_fsreq__FindStationRequest(struct soap *soap, struct FindStationRequest& return_) { struct fsreq__FindStationRequest *_p = soap_instantiate_fsreq__FindStationRequest(soap, -1, NULL, NULL, NULL); if (_p) { soap_default_fsreq__FindStationRequest(soap, _p); _p->return_ = return_; } return _p; }
+
+inline void soap_delete_fsreq__FindStationRequest(struct soap *soap, struct fsreq__FindStationRequest *p) { soap_delete(soap, p); }
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fsreq__FindStationRequest(struct soap*, int, int, void*, size_t, const void*, size_t);
+
+/* _fsreq_FindStationRequest is a typedef element/attribute synonym for FindStationRequest */
+
+#ifndef SOAP_TYPE__fsreq_FindStationRequest
+#define SOAP_TYPE__fsreq_FindStationRequest (56)
+#endif
+
+#define soap_default__fsreq_FindStationRequest(soap, a) soap_default_FindStationRequest(soap, a)
+
+
+#define soap_serialize__fsreq_FindStationRequest soap_serialize_FindStationRequest
+
+
+#define soap_out__fsreq_FindStationRequest soap_out_FindStationRequest
+
+
+#define soap_in__fsreq_FindStationRequest soap_in_FindStationRequest
+
+
+#define soap_put__fsreq_FindStationRequest soap_put_FindStationRequest
+
+
+#define soap_get__fsreq_FindStationRequest soap_get_FindStationRequest
+
+
+#define soap_instantiate__fsreq_FindStationRequest soap_instantiate_FindStationRequest
+
+
+#define soap_copy__fsreq_FindStationRequest soap_copy_FindStationRequest
+
+#ifndef SOAP_TYPE_FindStationRequest
+#define SOAP_TYPE_FindStationRequest (55)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default_FindStationRequest(struct soap*, struct FindStationRequest *);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_FindStationRequest(struct soap*, const struct FindStationRequest *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_FindStationRequest(struct soap*, const char*, int, const struct FindStationRequest *, const char*);
+SOAP_FMAC3 struct FindStationRequest * SOAP_FMAC4 soap_in_FindStationRequest(struct soap*, const char*, struct FindStationRequest *, const char*);
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_FindStationRequest(struct soap*, const struct FindStationRequest *, const char*, const char*);
+
+#ifndef soap_write_FindStationRequest
+#define soap_write_FindStationRequest(soap, data) ( soap_free_temp(soap), soap_begin_send(soap) || (soap_serialize_FindStationRequest(soap, data),0) || soap_put_FindStationRequest(soap, data, "FindStationRequest", NULL) || soap_end_send(soap), (soap)->error )
+#endif
+
+SOAP_FMAC3 struct FindStationRequest * SOAP_FMAC4 soap_get_FindStationRequest(struct soap*, struct FindStationRequest *, const char*, const char*);
+
+#ifndef soap_read_FindStationRequest
+#define soap_read_FindStationRequest(soap, data) ( soap_begin_recv(soap) || !soap_get_FindStationRequest(soap, data, NULL, NULL) || soap_end_recv(soap), (soap)->error )
+#endif
+
+SOAP_FMAC1 struct FindStationRequest * SOAP_FMAC2 soap_instantiate_FindStationRequest(struct soap*, int, const char*, const char*, size_t*);
+
+inline struct FindStationRequest * soap_new_FindStationRequest(struct soap *soap, int n = -1) { return soap_instantiate_FindStationRequest(soap, n, NULL, NULL, NULL); }
+
+inline struct FindStationRequest * soap_new_req_FindStationRequest(struct soap *soap, bool bDummy) { struct FindStationRequest *_p = soap_instantiate_FindStationRequest(soap, -1, NULL, NULL, NULL); if (_p) { soap_default_FindStationRequest(soap, _p); _p->bDummy = bDummy; } return _p; }
+
+inline struct FindStationRequest * soap_new_set_FindStationRequest(struct soap *soap, bool bDummy) { struct FindStationRequest *_p = soap_instantiate_FindStationRequest(soap, -1, NULL, NULL, NULL); if (_p) { soap_default_FindStationRequest(soap, _p); _p->bDummy = bDummy; } return _p; }
+
+inline void soap_delete_FindStationRequest(struct soap *soap, struct FindStationRequest *p) { soap_delete(soap, p); }
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_FindStationRequest(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_rlres__CReadLogResponse
 #define SOAP_TYPE_rlres__CReadLogResponse (54)
@@ -1800,7 +2310,7 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_WriteRequest(struct soap*, int, int, void*,
 #ifndef WITH_NOGLOBAL
 
 #ifndef SOAP_TYPE_PointerToSOAP_ENV__Reason
-#define SOAP_TYPE_PointerToSOAP_ENV__Reason (84)
+#define SOAP_TYPE_PointerToSOAP_ENV__Reason (106)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerToSOAP_ENV__Reason(struct soap*, struct SOAP_ENV__Reason *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerToSOAP_ENV__Reason(struct soap*, const char *, int, struct SOAP_ENV__Reason *const*, const char *);
@@ -1823,7 +2333,7 @@ SOAP_FMAC3 struct SOAP_ENV__Reason ** SOAP_FMAC4 soap_get_PointerToSOAP_ENV__Rea
 #ifndef WITH_NOGLOBAL
 
 #ifndef SOAP_TYPE_PointerToSOAP_ENV__Detail
-#define SOAP_TYPE_PointerToSOAP_ENV__Detail (83)
+#define SOAP_TYPE_PointerToSOAP_ENV__Detail (105)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerToSOAP_ENV__Detail(struct soap*, struct SOAP_ENV__Detail *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerToSOAP_ENV__Detail(struct soap*, const char *, int, struct SOAP_ENV__Detail *const*, const char *);
@@ -1846,7 +2356,7 @@ SOAP_FMAC3 struct SOAP_ENV__Detail ** SOAP_FMAC4 soap_get_PointerToSOAP_ENV__Det
 #ifndef WITH_NOGLOBAL
 
 #ifndef SOAP_TYPE_PointerToSOAP_ENV__Code
-#define SOAP_TYPE_PointerToSOAP_ENV__Code (78)
+#define SOAP_TYPE_PointerToSOAP_ENV__Code (100)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerToSOAP_ENV__Code(struct soap*, struct SOAP_ENV__Code *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerToSOAP_ENV__Code(struct soap*, const char *, int, struct SOAP_ENV__Code *const*, const char *);
@@ -1866,8 +2376,46 @@ SOAP_FMAC3 struct SOAP_ENV__Code ** SOAP_FMAC4 soap_get_PointerToSOAP_ENV__Code(
 
 #endif
 
+#ifndef SOAP_TYPE_PointerTocsres__CommandStationResponse
+#define SOAP_TYPE_PointerTocsres__CommandStationResponse (95)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTocsres__CommandStationResponse(struct soap*, struct csres__CommandStationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTocsres__CommandStationResponse(struct soap*, const char *, int, struct csres__CommandStationResponse *const*, const char *);
+SOAP_FMAC3 struct csres__CommandStationResponse ** SOAP_FMAC4 soap_in_PointerTocsres__CommandStationResponse(struct soap*, const char*, struct csres__CommandStationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTocsres__CommandStationResponse(struct soap*, struct csres__CommandStationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTocsres__CommandStationResponse
+#define soap_write_PointerTocsres__CommandStationResponse(soap, data) ( soap_free_temp(soap), soap_begin_send(soap) || (soap_serialize_PointerTocsres__CommandStationResponse(soap, data),0) || soap_put_PointerTocsres__CommandStationResponse(soap, data, "csres:CommandStationResponse", NULL) || soap_end_send(soap), (soap)->error )
+#endif
+
+SOAP_FMAC3 struct csres__CommandStationResponse ** SOAP_FMAC4 soap_get_PointerTocsres__CommandStationResponse(struct soap*, struct csres__CommandStationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTocsres__CommandStationResponse
+#define soap_read_PointerTocsres__CommandStationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTocsres__CommandStationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), (soap)->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTofsres__CFindStationResponse
+#define SOAP_TYPE_PointerTofsres__CFindStationResponse (92)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofsres__CFindStationResponse(struct soap*, struct fsres__CFindStationResponse *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofsres__CFindStationResponse(struct soap*, const char *, int, struct fsres__CFindStationResponse *const*, const char *);
+SOAP_FMAC3 struct fsres__CFindStationResponse ** SOAP_FMAC4 soap_in_PointerTofsres__CFindStationResponse(struct soap*, const char*, struct fsres__CFindStationResponse **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTofsres__CFindStationResponse(struct soap*, struct fsres__CFindStationResponse *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTofsres__CFindStationResponse
+#define soap_write_PointerTofsres__CFindStationResponse(soap, data) ( soap_free_temp(soap), soap_begin_send(soap) || (soap_serialize_PointerTofsres__CFindStationResponse(soap, data),0) || soap_put_PointerTofsres__CFindStationResponse(soap, data, "fsres:CFindStationResponse", NULL) || soap_end_send(soap), (soap)->error )
+#endif
+
+SOAP_FMAC3 struct fsres__CFindStationResponse ** SOAP_FMAC4 soap_get_PointerTofsres__CFindStationResponse(struct soap*, struct fsres__CFindStationResponse **, const char*, const char*);
+
+#ifndef soap_read_PointerTofsres__CFindStationResponse
+#define soap_read_PointerTofsres__CFindStationResponse(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTofsres__CFindStationResponse(soap, data, NULL, NULL) || soap_end_recv(soap), (soap)->error )
+#endif
+
+
 #ifndef SOAP_TYPE_PointerTorlres__CReadLogResponse
-#define SOAP_TYPE_PointerTorlres__CReadLogResponse (73)
+#define SOAP_TYPE_PointerTorlres__CReadLogResponse (89)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTorlres__CReadLogResponse(struct soap*, struct rlres__CReadLogResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTorlres__CReadLogResponse(struct soap*, const char *, int, struct rlres__CReadLogResponse *const*, const char *);
@@ -1886,7 +2434,7 @@ SOAP_FMAC3 struct rlres__CReadLogResponse ** SOAP_FMAC4 soap_get_PointerTorlres_
 
 
 #ifndef SOAP_TYPE_PointerTowlres__WriteLogResponse
-#define SOAP_TYPE_PointerTowlres__WriteLogResponse (67)
+#define SOAP_TYPE_PointerTowlres__WriteLogResponse (83)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTowlres__WriteLogResponse(struct soap*, struct wlres__WriteLogResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTowlres__WriteLogResponse(struct soap*, const char *, int, struct wlres__WriteLogResponse *const*, const char *);
@@ -1905,7 +2453,7 @@ SOAP_FMAC3 struct wlres__WriteLogResponse ** SOAP_FMAC4 soap_get_PointerTowlres_
 
 
 #ifndef SOAP_TYPE_PointerTofrres__FindReceiverResponse
-#define SOAP_TYPE_PointerTofrres__FindReceiverResponse (64)
+#define SOAP_TYPE_PointerTofrres__FindReceiverResponse (80)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofrres__FindReceiverResponse(struct soap*, struct frres__FindReceiverResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofrres__FindReceiverResponse(struct soap*, const char *, int, struct frres__FindReceiverResponse *const*, const char *);
@@ -1924,7 +2472,7 @@ SOAP_FMAC3 struct frres__FindReceiverResponse ** SOAP_FMAC4 soap_get_PointerTofr
 
 
 #ifndef SOAP_TYPE_PointerTorres__RefreshResponse
-#define SOAP_TYPE_PointerTorres__RefreshResponse (61)
+#define SOAP_TYPE_PointerTorres__RefreshResponse (77)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTorres__RefreshResponse(struct soap*, struct rres__RefreshResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTorres__RefreshResponse(struct soap*, const char *, int, struct rres__RefreshResponse *const*, const char *);
@@ -1943,7 +2491,7 @@ SOAP_FMAC3 struct rres__RefreshResponse ** SOAP_FMAC4 soap_get_PointerTorres__Re
 
 
 #ifndef SOAP_TYPE_PointerTorres__CReadResponse
-#define SOAP_TYPE_PointerTorres__CReadResponse (58)
+#define SOAP_TYPE_PointerTorres__CReadResponse (74)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTorres__CReadResponse(struct soap*, struct rres__CReadResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTorres__CReadResponse(struct soap*, const char *, int, struct rres__CReadResponse *const*, const char *);
@@ -1962,7 +2510,7 @@ SOAP_FMAC3 struct rres__CReadResponse ** SOAP_FMAC4 soap_get_PointerTorres__CRea
 
 
 #ifndef SOAP_TYPE_PointerTowres__WriteResponse
-#define SOAP_TYPE_PointerTowres__WriteResponse (55)
+#define SOAP_TYPE_PointerTowres__WriteResponse (71)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTowres__WriteResponse(struct soap*, struct wres__WriteResponse *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTowres__WriteResponse(struct soap*, const char *, int, struct wres__WriteResponse *const*, const char *);
@@ -2021,6 +2569,21 @@ SOAP_FMAC3 char ** SOAP_FMAC4 soap_get_string(struct soap*, char **, const char*
 #define soap_read_string(soap, data) ( soap_begin_recv(soap) || !soap_get_string(soap, data, NULL, NULL) || soap_end_recv(soap), (soap)->error )
 #endif
 
+
+#ifndef SOAP_TYPE_std__listTemplateOf_fsres_FindStationResponse
+#define SOAP_TYPE_std__listTemplateOf_fsres_FindStationResponse (61)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__listTemplateOf_fsres_FindStationResponse(struct soap*, std::list<struct FindStationResponse >*);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__listTemplateOf_fsres_FindStationResponse(struct soap*, const std::list<struct FindStationResponse >*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_std__listTemplateOf_fsres_FindStationResponse(struct soap*, const char*, int, const std::list<struct FindStationResponse >*, const char*);
+SOAP_FMAC3 std::list<struct FindStationResponse >* SOAP_FMAC4 soap_in_std__listTemplateOf_fsres_FindStationResponse(struct soap*, const char*, std::list<struct FindStationResponse >*, const char*);
+SOAP_FMAC1 std::list<struct FindStationResponse > * SOAP_FMAC2 soap_instantiate_std__listTemplateOf_fsres_FindStationResponse(struct soap*, int, const char*, const char*, size_t*);
+
+inline std::list<struct FindStationResponse > * soap_new_std__listTemplateOf_fsres_FindStationResponse(struct soap *soap, int n = -1) { return soap_instantiate_std__listTemplateOf_fsres_FindStationResponse(soap, n, NULL, NULL, NULL); }
+
+inline void soap_delete_std__listTemplateOf_fsres_FindStationResponse(struct soap *soap, std::list<struct FindStationResponse >*p) { soap_delete(soap, p); }
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__listTemplateOf_fsres_FindStationResponse(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__listTemplateOf_rlres_ReadLogResponse
 #define SOAP_TYPE_std__listTemplateOf_rlres_ReadLogResponse (53)

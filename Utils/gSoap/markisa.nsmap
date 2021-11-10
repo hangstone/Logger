@@ -16,6 +16,10 @@ SOAP_NMAC struct Namespace namespaces[] =
 	{"wlres", "http://tempuri.org/wlres.xsd", NULL, NULL},
 	{"rlreq", "http://tempuri.org/rlreq.xsd", NULL, NULL},
 	{"rlres", "http://tempuri.org/rlres.xsd", NULL, NULL},
+	{"fsreq", "http://tempuri.org/fsreq.xsd", NULL, NULL},
+	{"fsres", "http://tempuri.org/fsres.xsd", NULL, NULL},
+	{"csreq", "http://tempuri.org/csreq.xsd", NULL, NULL},
+	{"csres", "http://tempuri.org/csres.xsd", NULL, NULL},
 	{"hangpacs", "http://tempuri.org/hangpacs.xsd", NULL, NULL},
 	{NULL, NULL, NULL, NULL}
 };

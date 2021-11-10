@@ -31,6 +31,12 @@ compiling, linking, and/or using OpenSSL is allowed.
 enum Processing { hangpacs__Begin = 0, hangpacs__Processing = 1, hangpacs__end = 2 };
 #endif
 
+#ifndef SOAP_TYPE_CommandStation
+#define SOAP_TYPE_CommandStation (63)
+/* CommandStation */
+enum CommandStation { hangpacs__Stop = 0, hangpacs__Start = 1 };
+#endif
+
 /******************************************************************************\
  *                                                                            *
  * Types with Custom Serializers                                              *
@@ -412,99 +418,242 @@ public:
 };
 #endif
 
+#ifndef SOAP_TYPE_FindStationRequest
+#define SOAP_TYPE_FindStationRequest (55)
+/* FindStationRequest */
+struct FindStationRequest
+{
+public:
+	bool bDummy;	/* required element of type xsd:boolean */
+public:
+	int soap_type() const { return 55; } /* = unique type id SOAP_TYPE_FindStationRequest */
+};
+#endif
+
+#ifndef SOAP_TYPE_fsreq__FindStationRequest
+#define SOAP_TYPE_fsreq__FindStationRequest (57)
+/* fsreq:FindStationRequest */
+struct fsreq__FindStationRequest
+{
+public:
+	struct FindStationRequest return_;	/* required element of type fsreq-FindStationRequest */
+public:
+	int soap_type() const { return 57; } /* = unique type id SOAP_TYPE_fsreq__FindStationRequest */
+};
+#endif
+
+#ifndef SOAP_TYPE_FindStationResponse
+#define SOAP_TYPE_FindStationResponse (58)
+/* FindStationResponse */
+struct FindStationResponse
+{
+public:
+	std::wstring strIPAddress;	/* required element of type xsd:string */
+	std::wstring strStationName;	/* required element of type xsd:string */
+	std::wstring strStatus;	/* required element of type xsd:string */
+public:
+	int soap_type() const { return 58; } /* = unique type id SOAP_TYPE_FindStationResponse */
+};
+#endif
+
+#ifndef SOAP_TYPE__fsres__CFindStationResponse
+#define SOAP_TYPE__fsres__CFindStationResponse (60)
+/* fsres:CFindStationResponse */
+class SOAP_CMAC _fsres__CFindStationResponse
+{
+public:
+	std::list<struct FindStationResponse >m_listResponse;	/* optional element of type fsres-FindStationResponse */
+public:
+	virtual int soap_type() const { return 60; } /* = unique type id SOAP_TYPE__fsres__CFindStationResponse */
+	virtual void soap_default(struct soap*);
+	virtual void soap_serialize(struct soap*) const;
+	virtual int soap_put(struct soap*, const char*, const char*) const;
+	virtual int soap_out(struct soap*, const char*, int, const char*) const;
+	virtual void *soap_get(struct soap*, const char*, const char*);
+	virtual void *soap_in(struct soap*, const char*, const char*);
+	         _fsres__CFindStationResponse() { _fsres__CFindStationResponse::soap_default(NULL); }
+	virtual ~_fsres__CFindStationResponse() { }
+};
+#endif
+
+#ifndef SOAP_TYPE_fsres__CFindStationResponse
+#define SOAP_TYPE_fsres__CFindStationResponse (62)
+/* fsres:CFindStationResponse */
+struct fsres__CFindStationResponse
+{
+public:
+	_fsres__CFindStationResponse return_;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* required element of type fsres:CFindStationResponse */
+public:
+	int soap_type() const { return 62; } /* = unique type id SOAP_TYPE_fsres__CFindStationResponse */
+};
+#endif
+
+#ifndef SOAP_TYPE_CommandStationRequest
+#define SOAP_TYPE_CommandStationRequest (65)
+/* CommandStationRequest */
+struct CommandStationRequest
+{
+public:
+	enum CommandStation eCommand;	/* required element of type hangpacs:CommandStation */
+	std::wstring strStationName;	/* required element of type xsd:string */
+public:
+	int soap_type() const { return 65; } /* = unique type id SOAP_TYPE_CommandStationRequest */
+};
+#endif
+
+#ifndef SOAP_TYPE_csreq__CommandStationRequest
+#define SOAP_TYPE_csreq__CommandStationRequest (67)
+/* csreq:CommandStationRequest */
+struct csreq__CommandStationRequest
+{
+public:
+	struct CommandStationRequest retrun_;	/* required element of type csreq-CommandStationRequest */
+public:
+	int soap_type() const { return 67; } /* = unique type id SOAP_TYPE_csreq__CommandStationRequest */
+};
+#endif
+
+#ifndef SOAP_TYPE_CommandStationResponse
+#define SOAP_TYPE_CommandStationResponse (68)
+/* CommandStationResponse */
+struct CommandStationResponse
+{
+public:
+	bool bDummy;	/* required element of type xsd:boolean */
+public:
+	int soap_type() const { return 68; } /* = unique type id SOAP_TYPE_CommandStationResponse */
+};
+#endif
+
+#ifndef SOAP_TYPE_csres__CommandStationResponse
+#define SOAP_TYPE_csres__CommandStationResponse (70)
+/* csres:CommandStationResponse */
+struct csres__CommandStationResponse
+{
+public:
+	struct CommandStationResponse return_;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* required element of type csres-CommandStationResponse */
+public:
+	int soap_type() const { return 70; } /* = unique type id SOAP_TYPE_csres__CommandStationResponse */
+};
+#endif
+
 #ifndef SOAP_TYPE_hangpacs__WriteRequest
-#define SOAP_TYPE_hangpacs__WriteRequest (57)
+#define SOAP_TYPE_hangpacs__WriteRequest (73)
 /* hangpacs:WriteRequest */
 struct hangpacs__WriteRequest
 {
 public:
 	struct wreq__WriteRequest stReqMsg;	/* required element of type wreq:WriteRequest */
 public:
-	int soap_type() const { return 57; } /* = unique type id SOAP_TYPE_hangpacs__WriteRequest */
+	int soap_type() const { return 73; } /* = unique type id SOAP_TYPE_hangpacs__WriteRequest */
 };
 #endif
 
 #ifndef SOAP_TYPE_hangpacs__ReadRequest
-#define SOAP_TYPE_hangpacs__ReadRequest (60)
+#define SOAP_TYPE_hangpacs__ReadRequest (76)
 /* hangpacs:ReadRequest */
 struct hangpacs__ReadRequest
 {
 public:
 	struct rreq__ReadRequest stReqMsg;	/* required element of type rreq:ReadRequest */
 public:
-	int soap_type() const { return 60; } /* = unique type id SOAP_TYPE_hangpacs__ReadRequest */
+	int soap_type() const { return 76; } /* = unique type id SOAP_TYPE_hangpacs__ReadRequest */
 };
 #endif
 
 #ifndef SOAP_TYPE_hangpacs__RefreshRequest
-#define SOAP_TYPE_hangpacs__RefreshRequest (63)
+#define SOAP_TYPE_hangpacs__RefreshRequest (79)
 /* hangpacs:RefreshRequest */
 struct hangpacs__RefreshRequest
 {
 public:
 	struct rreq__RefreshRequest stReqMsg;	/* required element of type rreq:RefreshRequest */
 public:
-	int soap_type() const { return 63; } /* = unique type id SOAP_TYPE_hangpacs__RefreshRequest */
+	int soap_type() const { return 79; } /* = unique type id SOAP_TYPE_hangpacs__RefreshRequest */
 };
 #endif
 
 #ifndef SOAP_TYPE_hangpacs__FindReceiver
-#define SOAP_TYPE_hangpacs__FindReceiver (66)
+#define SOAP_TYPE_hangpacs__FindReceiver (82)
 /* hangpacs:FindReceiver */
 struct hangpacs__FindReceiver
 {
 public:
 	struct frreq__FindReceiverRequest stReqMsg;	/* required element of type frreq:FindReceiverRequest */
 public:
-	int soap_type() const { return 66; } /* = unique type id SOAP_TYPE_hangpacs__FindReceiver */
+	int soap_type() const { return 82; } /* = unique type id SOAP_TYPE_hangpacs__FindReceiver */
 };
 #endif
 
 #ifndef SOAP_TYPE_hangpacs__WriteLog
-#define SOAP_TYPE_hangpacs__WriteLog (69)
+#define SOAP_TYPE_hangpacs__WriteLog (85)
 /* hangpacs:WriteLog */
 struct hangpacs__WriteLog
 {
 public:
 	struct wlreq__WriteLogRequest stReqMsg;	/* required element of type wlreq:WriteLogRequest */
 public:
-	int soap_type() const { return 69; } /* = unique type id SOAP_TYPE_hangpacs__WriteLog */
+	int soap_type() const { return 85; } /* = unique type id SOAP_TYPE_hangpacs__WriteLog */
 };
 #endif
 
 #ifndef SOAP_TYPE_hangpacs__WriteLogAsync
-#define SOAP_TYPE_hangpacs__WriteLogAsync (72)
+#define SOAP_TYPE_hangpacs__WriteLogAsync (88)
 /* hangpacs:WriteLogAsync */
 struct hangpacs__WriteLogAsync
 {
 public:
 	struct wlreq__WriteLogRequest stReqMsg;	/* required element of type wlreq:WriteLogRequest */
 public:
-	int soap_type() const { return 72; } /* = unique type id SOAP_TYPE_hangpacs__WriteLogAsync */
+	int soap_type() const { return 88; } /* = unique type id SOAP_TYPE_hangpacs__WriteLogAsync */
 };
 #endif
 
 #ifndef SOAP_TYPE_hangpacs__ReadLog
-#define SOAP_TYPE_hangpacs__ReadLog (75)
+#define SOAP_TYPE_hangpacs__ReadLog (91)
 /* hangpacs:ReadLog */
 struct hangpacs__ReadLog
 {
 public:
 	struct rlreq__ReadLogRequest stReqMsg;	/* required element of type rlreq:ReadLogRequest */
 public:
-	int soap_type() const { return 75; } /* = unique type id SOAP_TYPE_hangpacs__ReadLog */
+	int soap_type() const { return 91; } /* = unique type id SOAP_TYPE_hangpacs__ReadLog */
+};
+#endif
+
+#ifndef SOAP_TYPE_hangpacs__FindStation
+#define SOAP_TYPE_hangpacs__FindStation (94)
+/* hangpacs:FindStation */
+struct hangpacs__FindStation
+{
+public:
+	struct fsreq__FindStationRequest stReqMsg;	/* required element of type fsreq:FindStationRequest */
+public:
+	int soap_type() const { return 94; } /* = unique type id SOAP_TYPE_hangpacs__FindStation */
+};
+#endif
+
+#ifndef SOAP_TYPE_hangpacs__CommandStation
+#define SOAP_TYPE_hangpacs__CommandStation (97)
+/* hangpacs:CommandStation */
+struct hangpacs__CommandStation
+{
+public:
+	struct csreq__CommandStationRequest stReqMsg;	/* required element of type csreq:CommandStationRequest */
+public:
+	int soap_type() const { return 97; } /* = unique type id SOAP_TYPE_hangpacs__CommandStation */
 };
 #endif
 
 #ifndef WITH_NOGLOBAL
 
 #ifndef SOAP_TYPE_SOAP_ENV__Header
-#define SOAP_TYPE_SOAP_ENV__Header (76)
+#define SOAP_TYPE_SOAP_ENV__Header (98)
 /* SOAP Header: */
 struct SOAP_ENV__Header
 {
 public:
-	int soap_type() const { return 76; } /* = unique type id SOAP_TYPE_SOAP_ENV__Header */
+	int soap_type() const { return 98; } /* = unique type id SOAP_TYPE_SOAP_ENV__Header */
 #ifdef WITH_NOEMPTYSTRUCT
 private:
 	char dummy;	/* dummy member to enable compilation */
@@ -517,7 +666,7 @@ private:
 #ifndef WITH_NOGLOBAL
 
 #ifndef SOAP_TYPE_SOAP_ENV__Code
-#define SOAP_TYPE_SOAP_ENV__Code (77)
+#define SOAP_TYPE_SOAP_ENV__Code (99)
 /* SOAP Fault Code: */
 struct SOAP_ENV__Code
 {
@@ -525,7 +674,7 @@ public:
 	char *SOAP_ENV__Value;	/* optional element of type xsd:QName */
 	struct SOAP_ENV__Code *SOAP_ENV__Subcode;	/* optional element of type SOAP-ENV:Code */
 public:
-	int soap_type() const { return 77; } /* = unique type id SOAP_TYPE_SOAP_ENV__Code */
+	int soap_type() const { return 99; } /* = unique type id SOAP_TYPE_SOAP_ENV__Code */
 };
 #endif
 
@@ -534,7 +683,7 @@ public:
 #ifndef WITH_NOGLOBAL
 
 #ifndef SOAP_TYPE_SOAP_ENV__Detail
-#define SOAP_TYPE_SOAP_ENV__Detail (79)
+#define SOAP_TYPE_SOAP_ENV__Detail (101)
 /* SOAP-ENV:Detail */
 struct SOAP_ENV__Detail
 {
@@ -543,7 +692,7 @@ public:
 	int __type;	/* any type of element <fault> (defined below) */
 	void *fault;	/* transient */
 public:
-	int soap_type() const { return 79; } /* = unique type id SOAP_TYPE_SOAP_ENV__Detail */
+	int soap_type() const { return 101; } /* = unique type id SOAP_TYPE_SOAP_ENV__Detail */
 };
 #endif
 
@@ -552,14 +701,14 @@ public:
 #ifndef WITH_NOGLOBAL
 
 #ifndef SOAP_TYPE_SOAP_ENV__Reason
-#define SOAP_TYPE_SOAP_ENV__Reason (81)
+#define SOAP_TYPE_SOAP_ENV__Reason (103)
 /* SOAP-ENV:Reason */
 struct SOAP_ENV__Reason
 {
 public:
 	char *SOAP_ENV__Text;	/* optional element of type xsd:string */
 public:
-	int soap_type() const { return 81; } /* = unique type id SOAP_TYPE_SOAP_ENV__Reason */
+	int soap_type() const { return 103; } /* = unique type id SOAP_TYPE_SOAP_ENV__Reason */
 };
 #endif
 
@@ -568,7 +717,7 @@ public:
 #ifndef WITH_NOGLOBAL
 
 #ifndef SOAP_TYPE_SOAP_ENV__Fault
-#define SOAP_TYPE_SOAP_ENV__Fault (82)
+#define SOAP_TYPE_SOAP_ENV__Fault (104)
 /* SOAP Fault: */
 struct SOAP_ENV__Fault
 {
@@ -583,7 +732,7 @@ public:
 	char *SOAP_ENV__Role;	/* optional element of type xsd:string */
 	struct SOAP_ENV__Detail *SOAP_ENV__Detail;	/* optional element of type SOAP-ENV:Detail */
 public:
-	int soap_type() const { return 82; } /* = unique type id SOAP_TYPE_SOAP_ENV__Fault */
+	int soap_type() const { return 104; } /* = unique type id SOAP_TYPE_SOAP_ENV__Fault */
 };
 #endif
 
@@ -668,6 +817,31 @@ typedef struct ReadLogRequest _rlreq_ReadLogRequest;
 #ifndef SOAP_TYPE__rlres_ReadLogResponse
 #define SOAP_TYPE__rlres_ReadLogResponse (51)
 typedef struct ReadLogResponse _rlres_ReadLogResponse;
+#endif
+
+#ifndef SOAP_TYPE__fsreq_FindStationRequest
+#define SOAP_TYPE__fsreq_FindStationRequest (56)
+typedef struct FindStationRequest _fsreq_FindStationRequest;
+#endif
+
+#ifndef SOAP_TYPE__fsres_FindStationResponse
+#define SOAP_TYPE__fsres_FindStationResponse (59)
+typedef struct FindStationResponse _fsres_FindStationResponse;
+#endif
+
+#ifndef SOAP_TYPE__hangpacs__CommandStation
+#define SOAP_TYPE__hangpacs__CommandStation (64)
+typedef enum CommandStation _hangpacs__CommandStation;
+#endif
+
+#ifndef SOAP_TYPE__csreq_CommandStationRequest
+#define SOAP_TYPE__csreq_CommandStationRequest (66)
+typedef struct CommandStationRequest _csreq_CommandStationRequest;
+#endif
+
+#ifndef SOAP_TYPE__csres_CommandStationResponse
+#define SOAP_TYPE__csres_CommandStationResponse (69)
+typedef struct CommandStationResponse _csres_CommandStationResponse;
 #endif
 
 

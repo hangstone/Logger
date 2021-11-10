@@ -96,5 +96,13 @@ class SOAP_CMAC Proxy : public soap
 	/// Web service operation 'ReadLog' (returns error code or SOAP_OK)
 	virtual	int ReadLog(struct rlreq__ReadLogRequest stReqMsg, struct rlres__CReadLogResponse *stRspMsg) { return this->ReadLog(NULL, NULL, stReqMsg, stRspMsg); }
 	virtual	int ReadLog(const char *endpoint, const char *soap_action, struct rlreq__ReadLogRequest stReqMsg, struct rlres__CReadLogResponse *stRspMsg);
+
+	/// Web service operation 'FindStation' (returns error code or SOAP_OK)
+	virtual	int FindStation(struct fsreq__FindStationRequest stReqMsg, struct fsres__CFindStationResponse *stRspMsg) { return this->FindStation(NULL, NULL, stReqMsg, stRspMsg); }
+	virtual	int FindStation(const char *endpoint, const char *soap_action, struct fsreq__FindStationRequest stReqMsg, struct fsres__CFindStationResponse *stRspMsg);
+
+	/// Web service operation 'CommandStation' (returns error code or SOAP_OK)
+	virtual	int CommandStation(struct csreq__CommandStationRequest stReqMsg, struct csres__CommandStationResponse *stRspMsg) { return this->CommandStation(NULL, NULL, stReqMsg, stRspMsg); }
+	virtual	int CommandStation(const char *endpoint, const char *soap_action, struct csreq__CommandStationRequest stReqMsg, struct csres__CommandStationResponse *stRspMsg);
 };
 #endif

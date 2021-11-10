@@ -8,6 +8,7 @@ This program is released under the GPL with the additional exemption that
 compiling, linking, and/or using OpenSSL is allowed.
 */
 
+#include "stdafx.h"
 #include "soapProxy.h"
 
 Proxy::Proxy()
@@ -58,6 +59,10 @@ void Proxy::Proxy_init(soap_mode imode, soap_mode omode)
 	{"wlres", "http://tempuri.org/wlres.xsd", NULL, NULL},
 	{"rlreq", "http://tempuri.org/rlreq.xsd", NULL, NULL},
 	{"rlres", "http://tempuri.org/rlres.xsd", NULL, NULL},
+	{"fsreq", "http://tempuri.org/fsreq.xsd", NULL, NULL},
+	{"fsres", "http://tempuri.org/fsres.xsd", NULL, NULL},
+	{"csreq", "http://tempuri.org/csreq.xsd", NULL, NULL},
+	{"csres", "http://tempuri.org/csres.xsd", NULL, NULL},
 	{"hangpacs", "http://tempuri.org/hangpacs.xsd", NULL, NULL},
 	{NULL, NULL, NULL, NULL}
 };
@@ -468,6 +473,106 @@ int Proxy::ReadLog(const char *endpoint, const char *soap_action, struct rlreq__
 	 || soap_body_begin_in(soap))
 		return soap_closesock(soap);
 	soap_get_rlres__CReadLogResponse(soap, stRspMsg, "rlres:CReadLogResponse", "");
+	if (soap->error)
+		return soap_recv_fault(soap, 0);
+	if (soap_body_end_in(soap)
+	 || soap_envelope_end_in(soap)
+	 || soap_end_recv(soap))
+		return soap_closesock(soap);
+	return soap_closesock(soap);
+}
+
+int Proxy::FindStation(const char *endpoint, const char *soap_action, struct fsreq__FindStationRequest stReqMsg, struct fsres__CFindStationResponse *stRspMsg)
+{	struct soap *soap = this;
+	struct hangpacs__FindStation soap_tmp_hangpacs__FindStation;
+	if (endpoint)
+		soap_endpoint = endpoint;
+	soap_begin(soap);
+	soap->encodingStyle = NULL;
+	soap_tmp_hangpacs__FindStation.stReqMsg = stReqMsg;
+	soap_serializeheader(soap);
+	soap_serialize_hangpacs__FindStation(soap, &soap_tmp_hangpacs__FindStation);
+	if (soap_begin_count(soap))
+		return soap->error;
+	if (soap->mode & SOAP_IO_LENGTH)
+	{	if (soap_envelope_begin_out(soap)
+		 || soap_putheader(soap)
+		 || soap_body_begin_out(soap)
+		 || soap_put_hangpacs__FindStation(soap, &soap_tmp_hangpacs__FindStation, "hangpacs:FindStation", NULL)
+		 || soap_body_end_out(soap)
+		 || soap_envelope_end_out(soap))
+			 return soap->error;
+	}
+	if (soap_end_count(soap))
+		return soap->error;
+	if (soap_connect(soap, soap_url(soap, soap_endpoint, NULL), soap_action)
+	 || soap_envelope_begin_out(soap)
+	 || soap_putheader(soap)
+	 || soap_body_begin_out(soap)
+	 || soap_put_hangpacs__FindStation(soap, &soap_tmp_hangpacs__FindStation, "hangpacs:FindStation", NULL)
+	 || soap_body_end_out(soap)
+	 || soap_envelope_end_out(soap)
+	 || soap_end_send(soap))
+		return soap_closesock(soap);
+	if (!stRspMsg)
+		return soap_closesock(soap);
+	soap_default_fsres__CFindStationResponse(soap, stRspMsg);
+	if (soap_begin_recv(soap)
+	 || soap_envelope_begin_in(soap)
+	 || soap_recv_header(soap)
+	 || soap_body_begin_in(soap))
+		return soap_closesock(soap);
+	soap_get_fsres__CFindStationResponse(soap, stRspMsg, "fsres:CFindStationResponse", "");
+	if (soap->error)
+		return soap_recv_fault(soap, 0);
+	if (soap_body_end_in(soap)
+	 || soap_envelope_end_in(soap)
+	 || soap_end_recv(soap))
+		return soap_closesock(soap);
+	return soap_closesock(soap);
+}
+
+int Proxy::CommandStation(const char *endpoint, const char *soap_action, struct csreq__CommandStationRequest stReqMsg, struct csres__CommandStationResponse *stRspMsg)
+{	struct soap *soap = this;
+	struct hangpacs__CommandStation soap_tmp_hangpacs__CommandStation;
+	if (endpoint)
+		soap_endpoint = endpoint;
+	soap_begin(soap);
+	soap->encodingStyle = NULL;
+	soap_tmp_hangpacs__CommandStation.stReqMsg = stReqMsg;
+	soap_serializeheader(soap);
+	soap_serialize_hangpacs__CommandStation(soap, &soap_tmp_hangpacs__CommandStation);
+	if (soap_begin_count(soap))
+		return soap->error;
+	if (soap->mode & SOAP_IO_LENGTH)
+	{	if (soap_envelope_begin_out(soap)
+		 || soap_putheader(soap)
+		 || soap_body_begin_out(soap)
+		 || soap_put_hangpacs__CommandStation(soap, &soap_tmp_hangpacs__CommandStation, "hangpacs:CommandStation", NULL)
+		 || soap_body_end_out(soap)
+		 || soap_envelope_end_out(soap))
+			 return soap->error;
+	}
+	if (soap_end_count(soap))
+		return soap->error;
+	if (soap_connect(soap, soap_url(soap, soap_endpoint, NULL), soap_action)
+	 || soap_envelope_begin_out(soap)
+	 || soap_putheader(soap)
+	 || soap_body_begin_out(soap)
+	 || soap_put_hangpacs__CommandStation(soap, &soap_tmp_hangpacs__CommandStation, "hangpacs:CommandStation", NULL)
+	 || soap_body_end_out(soap)
+	 || soap_envelope_end_out(soap)
+	 || soap_end_send(soap))
+		return soap_closesock(soap);
+	if (!stRspMsg)
+		return soap_closesock(soap);
+	soap_default_csres__CommandStationResponse(soap, stRspMsg);
+	if (soap_begin_recv(soap)
+	 || soap_envelope_begin_in(soap)
+	 || soap_recv_header(soap)
+	 || soap_body_begin_in(soap))
+		return soap_closesock(soap);
+	soap_get_csres__CommandStationResponse(soap, stRspMsg, "csres:CommandStationResponse", "");
 	if (soap->error)
 		return soap_recv_fault(soap, 0);
 	if (soap_body_end_in(soap)

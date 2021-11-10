@@ -51,6 +51,8 @@ A commercial use license is available from Genivia, Inc., contact@genivia.com
 --------------------------------------------------------------------------------
 */
 
+#include "stdafx.h"
+
 #define GSOAP_LIB_VERSION 20817
 
 #ifdef AS400
